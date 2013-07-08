@@ -7,18 +7,22 @@
 }
 .h5p-vtabs {
   float: left;
-  width: 170px;
+  width: 195px;
   position: relative;
 }
 .h5p-vtab-forms {
-  margin-left: 175px;
+  margin-left: 200px;
 }
 .h5p-vtab-form {
   position: relative;
   display: none;
+  padding: 1em 1em 1em 0;
 }
 .h5p-vtab-form.h5p-current {
   display: block;
+}
+.h5p-vtab-form > .field {
+  margin: 0;
 }
 .h5p-vtabs .h5p-placeholder {
   margin: 0;
@@ -42,6 +46,10 @@
   background: #eaeaea;
   border-bottom: 1px solid #333;
   border-right: 1px solid #333;
+  font-size: 0.875em;
+}
+.h5p-vtab-a:first-letter {
+    text-transform: uppercase;
 }
 .h5p-vtab-li.h5p-current .h5p-vtab-a {
   background: #cee5ff;

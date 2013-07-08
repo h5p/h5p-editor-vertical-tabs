@@ -85,7 +85,7 @@ H5PEditor.widgets.verticalTabs = H5PEditor.VerticalTabs = (function ($) {
     var that = this;
 
     var current = (index === 0 ? ' h5p-current' : '');
-    var $tab = $('<li class="h5p-vtab-li' + current + '"><a href="#" class="h5p-order"></a><a href="#" class="h5p-vtab-a">' + index + '</a></li>').appendTo(this.$tabs);
+    var $tab = $('<li class="h5p-vtab-li' + current + '"><a href="#" class="h5p-order"></a><a href="#" class="h5p-vtab-a">' + this.field.entity + '</a></li>').appendTo(this.$tabs);
     var $form = $('<div class="h5p-vtab-form' + current + '"></div>').appendTo(this.$forms);
 
     if (!this.passReadies) {
@@ -105,11 +105,7 @@ H5PEditor.widgets.verticalTabs = H5PEditor.VerticalTabs = (function ($) {
       delete this.readies;
     }
 
-    if (item instanceof ns.Group) {
-      item.expand();
-    }
-
-    $tab.children('.h5p-vtab-a').click(function () {
+    var $tabA = $tab.children('.h5p-vtab-a').click(function () {
       that.open($tab.index());
       return false;
     });
@@ -127,6 +123,15 @@ H5PEditor.widgets.verticalTabs = H5PEditor.VerticalTabs = (function ($) {
       }
       return false;
     });
+
+    if (item instanceof ns.Group) {
+      item.expand();
+    }
+    else if (this.field.field.type === 'library') {
+      item.changes.push(function () {
+        $tabA.text(item.$select.children('option:selected').text());
+      });
+    }
   };
 
   /**
@@ -211,7 +216,7 @@ H5PEditor.widgets.verticalTabs = H5PEditor.VerticalTabs = (function ($) {
     var $prev = that.$tab.prev();
     if ($prev.length && y < $prev.offset().top + ($prev.height() / 2)) {
       var oldIndex = that.$tab.index();
-      var newIndex = oldIndex + 1;
+      var newIndex = oldIndex - 1;
       $prev.insertAfter(that.$placeholder);
       var $form = that.$forms.children(':eq(' + oldIndex + ')');
       $form.prev().insertAfter($form);
