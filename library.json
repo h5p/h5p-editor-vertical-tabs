@@ -1,0 +1,19 @@
+{
+  "title": "Vertical Tabs",
+  "majorVersion": 1,
+  "minorVersion": 0,
+  "patchVersion": 0,
+  "runnable": 0,
+  "author": "Amendor AS",
+  "machineName": "H5PEditor.VerticalTabs",
+  "preloadedJs": [
+    {
+      "path": "H5PEditor.VerticalTabs.js"
+    }
+  ],
+  "preloadedCss": [
+    {
+      "path": "H5PEditor.VerticalTabs.css"
+    }
+  ]
+}
