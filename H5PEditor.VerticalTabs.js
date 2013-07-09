@@ -141,8 +141,13 @@ H5PEditor.widgets.verticalTabs = H5PEditor.VerticalTabs = (function ($) {
    * @returns {undefined}
    */
   C.prototype.open = function (index) {
-    this.$tabs.children('.h5p-current').removeClass('h5p-current').end().children(':eq(' + index + ')').addClass('h5p-current');
-    this.$forms.children('.h5p-current').removeClass('h5p-current').end().children(':eq(' + index + ')').addClass('h5p-current');
+    var $current = this.$tabs.children('.h5p-current');
+    if (this.children[$current.index()].validate() !== false) {
+      // Make sure tab is valid before opening another.
+      $current.removeClass('h5p-current');
+      this.$tabs.children(':eq(' + index + ')').addClass('h5p-current');
+      this.$forms.children('.h5p-current').removeClass('h5p-current').end().children(':eq(' + index + ')').addClass('h5p-current');
+    }
   };
 
   /**
