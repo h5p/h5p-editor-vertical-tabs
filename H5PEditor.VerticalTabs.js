@@ -280,7 +280,8 @@ H5PEditor.widgets.verticalTabs = H5PEditor.VerticalTabs = (function ($) {
    * @returns {undefined}
    */
   C.prototype.remove = function () {
-    this.$item.remove();
+    H5PEditor.removeChildren(this.children);
+    this.$tabs.parent().parent().remove();
   };
 
   /**
