@@ -40,16 +40,13 @@
   margin-right: 14px;
   display: block;
   white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
   padding: 4px 4px 4px 26px;
   background: #eaeaea;
   border-bottom: 1px solid #333;
   border-right: 1px solid #333;
   font-size: 0.875em;
-}
-.h5p-vtab-a:first-letter {
-    text-transform: uppercase;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .h5p-vtab-li.h5p-current .h5p-vtab-a {
   background: #cee5ff;

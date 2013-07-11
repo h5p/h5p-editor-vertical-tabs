@@ -85,7 +85,7 @@ H5PEditor.widgets.verticalTabs = H5PEditor.VerticalTabs = (function ($) {
     var that = this;
 
     var current = (index === 0 ? ' h5p-current' : '');
-    var $tab = $('<li class="h5p-vtab-li' + current + '"><a href="#" class="h5p-order"></a><a href="#" class="h5p-vtab-a"><span class="h5p-index-label">' + (index + 1) + '</span>. <span class="h5p-label">' + this.field.entity + '</span></a></li>').appendTo(this.$tabs);
+    var $tab = $('<li class="h5p-vtab-li' + current + '"><a href="#" class="h5p-order"></a><a href="#" class="h5p-vtab-a"><span class="h5p-index-label">' + (index + 1) + '</span>. <span class="h5p-label">' + C.UCFirst(this.field.entity) + '</span></a></li>').appendTo(this.$tabs);
     var $form = $('<div class="h5p-vtab-form' + current + '"></div>').appendTo(this.$forms);
 
     if (!this.passReadies) {
@@ -128,8 +128,18 @@ H5PEditor.widgets.verticalTabs = H5PEditor.VerticalTabs = (function ($) {
       item.expand();
     }
     else if (this.field.field.type === 'library') {
-      item.changes.push(function () {
-        $label.text(item.$select.children('option:selected').text());
+      item.changes.push(function (library) {
+        var libraryTitle;
+
+        if (library === undefined) {
+          // For older versions of cåre.
+          libraryTitle = item.$select.children('option:selected').text();
+        }
+        else {
+          libraryTitle = library.title;
+        }
+
+        $label.text(libraryTitle);
       });
     }
   };
@@ -277,9 +287,19 @@ H5PEditor.widgets.verticalTabs = H5PEditor.VerticalTabs = (function ($) {
    * @returns {undefined}
    */
   C.prototype.reindexIndexLabels = function () {
-    this.$tabs.find('.h5p-index-label').each(function (element, index) {
+    this.$tabs.find('.h5p-index-label').each(function (index, element) {
       $(element).text(index + 1);
     });
+  };
+
+  /**
+   * Convert first letter of given string to upper case.
+   *
+   * @param {String} word
+   * @returns {String}
+   */
+  C.UCFirst = function (word) {
+    return word.substr(0,1).toUpperCase() + word.substr(1);
   };
 
   /**
