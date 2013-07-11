@@ -85,7 +85,7 @@ H5PEditor.widgets.verticalTabs = H5PEditor.VerticalTabs = (function ($) {
     var that = this;
 
     var current = (index === 0 ? ' h5p-current' : '');
-    var $tab = $('<li class="h5p-vtab-li' + current + '"><a href="#" class="h5p-order"></a><a href="#" class="h5p-vtab-a">' + this.field.entity + '</a></li>').appendTo(this.$tabs);
+    var $tab = $('<li class="h5p-vtab-li' + current + '"><a href="#" class="h5p-order"></a><a href="#" class="h5p-vtab-a"><span class="h5p-index-label">' + (index + 1) + '</span>. <span class="h5p-label">' + this.field.entity + '</span></a></li>').appendTo(this.$tabs);
     var $form = $('<div class="h5p-vtab-form' + current + '"></div>').appendTo(this.$forms);
 
     if (!this.passReadies) {
@@ -105,10 +105,10 @@ H5PEditor.widgets.verticalTabs = H5PEditor.VerticalTabs = (function ($) {
       delete this.readies;
     }
 
-    var $tabA = $tab.children('.h5p-vtab-a').click(function () {
+    var $label = $tab.children('.h5p-vtab-a').click(function () {
       that.open($tab.index());
       return false;
-    });
+    }).children('.h5p-label');
 
     $tab.children('.h5p-order').mousedown(function (event) {
       that.startSort($tab, event.clientX, event.clientY);
@@ -129,7 +129,7 @@ H5PEditor.widgets.verticalTabs = H5PEditor.VerticalTabs = (function ($) {
     }
     else if (this.field.field.type === 'library') {
       item.changes.push(function () {
-        $tabA.text(item.$select.children('option:selected').text());
+        $label.text(item.$select.children('option:selected').text());
       });
     }
   };
@@ -268,6 +268,18 @@ H5PEditor.widgets.verticalTabs = H5PEditor.VerticalTabs = (function ($) {
     that.$tab.removeClass('h5p-moving').css({top: '', left: ''});
     that.$placeholder.remove();
     H5P.$body.unbind('mousemove', C.sort).unbind('mouseup', C.endSort).unbind('mouseleave', C.endSort).css({'-moz-user-select': '', '-webkit-user-select': '', 'user-select': '', '-ms-user-select': ''}).removeAttr('unselectable')[0].onselectstart = null;
+    that.reindexIndexLabels();
+  };
+
+  /**
+   * Reindex index labels. (Makes it easier to keep track of questions)
+   *
+   * @returns {undefined}
+   */
+  C.prototype.reindexIndexLabels = function () {
+    this.$tabs.find('.h5p-index-label').each(function (element, index) {
+      $(element).text(index + 1);
+    });
   };
 
   /**
