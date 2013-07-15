@@ -178,6 +178,7 @@ H5PEditor.widgets.verticalTabs = H5PEditor.VerticalTabs = (function ($) {
     this.$tabs.children(':eq(' + index + ')').remove();
     this.$forms.children(':eq(' + index + ')').remove();
     this.params.splice(index, 1);
+    this.reindexIndexLabels();
   };
 
   /**
