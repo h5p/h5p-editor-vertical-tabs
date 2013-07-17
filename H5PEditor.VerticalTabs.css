@@ -16,7 +16,7 @@
 .h5p-vtab-form {
   position: relative;
   display: none;
-  padding: 1em 1em 1em 0;
+  padding: 20px 20px 1em 0;
 }
 .h5p-vtab-form.h5p-current {
   display: block;
@@ -83,8 +83,8 @@
 }
 .h5p-vtab-form > .h5p-remove {
   position: absolute;
-  right: 8px;
-  top: 8px;
+  right: 6px;
+  top: 6px;
 }
 .h5p-remove:focus {
   box-shadow: 0 0 8px 2px #cb3535;
