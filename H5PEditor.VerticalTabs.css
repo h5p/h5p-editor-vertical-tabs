@@ -40,7 +40,7 @@
   margin-right: 14px;
   display: block;
   white-space: nowrap;
-  padding: 4px 4px 4px 26px;
+  padding: 2px 4px 2px 26px;
   background: #eaeaea;
   border-bottom: 1px solid #333;
   border-right: 1px solid #333;
@@ -67,6 +67,7 @@
 .h5p-vtabs > input[type="button"] {
   float: right;
   margin: 8px 14px 8px 8px;
+  font-size: 0.7em;
 }
 .h5p-vtab-wrapper .h5p-remove,
 .h5p-vtab-wrapper .h5p-order {
