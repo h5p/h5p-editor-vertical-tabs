@@ -40,11 +40,11 @@
   margin-right: 14px;
   display: block;
   white-space: nowrap;
-  padding: 2px 4px 2px 26px;
+  padding: 6px 4px 6px 26px;
   background: #eaeaea;
   border-bottom: 1px solid #333;
   border-right: 1px solid #333;
-  font-size: 0.875em;
+  font-size: 14px;
   overflow: hidden;
   text-overflow: ellipsis;
 }
