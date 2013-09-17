@@ -73,6 +73,13 @@ H5PEditor.widgets.verticalTabs = H5PEditor.VerticalTabs = (function ($) {
     for (var i = 0; i < this.params.length; i++) {
       this.add(i);
     }
+
+    // Add min. fields.
+    var missing = this.field.min - this.params.length;
+    while (missing > 0) {
+      that.$add.click();
+      missing--;
+    }
   };
 
   /**
