@@ -316,7 +316,15 @@ H5PEditor.widgets.verticalTabs = H5PEditor.VerticalTabs = (function ($) {
    * @returns {Boolean}
    */
   C.prototype.validate = function () {
-    return true;
+    var valid = true;
+
+    for (var i = 0; i < this.children.length; i++) {
+      if (this.children[i].validate() === false) {
+        valid = false;
+      }
+    }
+
+    return valid;
   };
 
   /**
