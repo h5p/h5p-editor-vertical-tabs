@@ -215,7 +215,7 @@ H5PEditor.widgets.verticalTabs = H5PEditor.VerticalTabs = (function ($) {
     var width = $tab.width();
     var height = $tab.height();
     $tab.css({width: width, height: height}).addClass('h5p-moving');
-    this.$placeholder = $('<li class="h5p-placeholder"><a href="#" class="h5p-vtab-a">&nbsp;</a></li>').insertAfter($tab);
+    this.$placeholder = $('<li class="h5p-placeholder"><a href="#" class="h5p-vtab-a" style="box-sizing:border-box; height:' + height + 'px">&nbsp;</a></li>').insertAfter($tab);
   };
 
   /**
@@ -283,7 +283,7 @@ H5PEditor.widgets.verticalTabs = H5PEditor.VerticalTabs = (function ($) {
    */
   C.endSort = function (event) {
     var that = event.data.instance;
-    that.$tab.removeClass('h5p-moving').css({top: '', left: ''});
+    that.$tab.removeClass('h5p-moving').css({top: '', left: '', height: ''});
     that.$placeholder.remove();
     H5P.$body.unbind('mousemove', C.sort).unbind('mouseup', C.endSort).unbind('mouseleave', C.endSort).css({'-moz-user-select': '', '-webkit-user-select': '', 'user-select': '', '-ms-user-select': ''}).removeAttr('unselectable')[0].onselectstart = null;
     that.reindexIndexLabels();
