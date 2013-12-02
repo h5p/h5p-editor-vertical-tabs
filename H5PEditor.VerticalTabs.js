@@ -157,9 +157,9 @@ H5PEditor.widgets.verticalTabs = H5PEditor.VerticalTabs = (function ($) {
    * @param {Number} index
    * @returns {undefined}
    */
-  C.prototype.open = function (index) {
+  C.prototype.open = function (index, skipValidation) {
     var $current = this.$tabs.children('.h5p-current');
-    if (this.children[$current.index()].validate() !== false) {
+    if (skipValidation === true || this.children[$current.index()].validate() !== false) {
       // Make sure tab is valid before opening another.
       $current.removeClass('h5p-current');
       this.$tabs.children(':eq(' + index + ')').addClass('h5p-current');
@@ -176,10 +176,10 @@ H5PEditor.widgets.verticalTabs = H5PEditor.VerticalTabs = (function ($) {
     if (this.params.length !== 1) {
       var next = index - 1;
       if (next !== -1) {
-        this.open(next);
+        this.open(next, true);
       }
       else {
-        this.open(index + 1);
+        this.open(index + 1, true);
       }
     }
     this.$tabs.children(':eq(' + index + ')').remove();
@@ -201,7 +201,7 @@ H5PEditor.widgets.verticalTabs = H5PEditor.VerticalTabs = (function ($) {
       instance: this
     };
 
-    H5P.$body.bind('mouseup', eventData, C.endSort).bind('mouseleave', eventData, C.endSort).css({'-moz-user-select': 'none', '-webkit-user-select': 'none', 'user-select': 'none', '-ms-user-select': 'none'}).mousemove(eventData, C.sort).attr('unselectable', 'on')[0].onselectstart = function () {
+    H5P.$body.bind('mouseup', eventData, C.endSort).bind('mouseleave', eventData, C.endSort).css({'-moz-user-select': 'none', '-webkit-user-select': 'none', 'user-select': 'none', '-ms-user-select': 'none'}).mousemove(eventData, C.sort).attr('unselectable', 'on')[0].onselectstart = H5P.$body[0].ondragstart = function () {
       return false;
     };
 
@@ -285,7 +285,7 @@ H5PEditor.widgets.verticalTabs = H5PEditor.VerticalTabs = (function ($) {
     var that = event.data.instance;
     that.$tab.removeClass('h5p-moving').css({top: '', left: '', height: ''});
     that.$placeholder.remove();
-    H5P.$body.unbind('mousemove', C.sort).unbind('mouseup', C.endSort).unbind('mouseleave', C.endSort).css({'-moz-user-select': '', '-webkit-user-select': '', 'user-select': '', '-ms-user-select': ''}).removeAttr('unselectable')[0].onselectstart = null;
+    H5P.$body.unbind('mousemove', C.sort).unbind('mouseup', C.endSort).unbind('mouseleave', C.endSort).css({'-moz-user-select': '', '-webkit-user-select': '', 'user-select': '', '-ms-user-select': ''}).removeAttr('unselectable')[0].onselectstart = H5P.$body[0].ondragstart = null;
     that.reindexIndexLabels();
   };
 
