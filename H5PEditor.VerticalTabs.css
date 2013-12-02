@@ -101,7 +101,7 @@
   height: 14px;
 }
 .h5p-vtab-wrapper .h5p-remove:after {
-  font-family: FontAwesome;
+  font-family: H5PFontAwesome4;
   content: "\f057";
   color: #666;
   font-size: 1.2em;
@@ -126,7 +126,7 @@
   text-decoration: none;
 }
 .h5p-vtab-wrapper .h5p-order:before {
-  font-family: FontAwesome;
+  font-family: H5PFontAwesome4;
   content: "\f0dc";
   color: #666;
 }
