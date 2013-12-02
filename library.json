@@ -3,6 +3,10 @@
   "majorVersion": 1,
   "minorVersion": 0,
   "patchVersion": 5,
+  "apiVersion": {
+    "majorVersion": 1,
+    "minorVersion": 0
+  },
   "runnable": 0,
   "author": "Amendor AS",
   "machineName": "H5PEditor.VerticalTabs",
