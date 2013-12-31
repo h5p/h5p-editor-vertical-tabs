@@ -22,6 +22,7 @@
 }
 .h5p-vtab-form.h5p-current {
   display: block;
+  overflow: hidden;
 }
 .h5p-vtab-form > .field {
   margin: 0;
