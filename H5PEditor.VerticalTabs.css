@@ -2,7 +2,6 @@
 .h5p-vtab-wrapper {
   border: 1px solid #ccc;
   background: #fff;
-  overflow: hidden;
   margin: 0.25em 0;
 }
 .h5p-vtabs {
@@ -22,7 +21,6 @@
 }
 .h5p-vtab-form.h5p-current {
   display: block;
-  overflow: hidden;
 }
 .h5p-vtab-form > .field {
   margin: 0;
