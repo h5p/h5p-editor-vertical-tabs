@@ -2,7 +2,7 @@
   "title": "Vertical Tabs",
   "majorVersion": 1,
   "minorVersion": 0,
-  "patchVersion": 8,
+  "patchVersion": 9,
   "coreApi": {
     "majorVersion": 1,
     "minorVersion": 0
@@ -18,6 +18,13 @@
   "preloadedCss": [
     {
       "path": "H5PEditor.VerticalTabs.css"
+    }
+  ],
+  "preloadedDependencies": [
+    {
+      "machineName": "FontAwesome",
+      "majorVersion": 4,
+      "minorVersion": 1
     }
   ]
 }
