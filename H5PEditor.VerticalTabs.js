@@ -6,6 +6,7 @@ var H5PEditor = H5PEditor || {};
  * @param {jQuery} $
  */
 H5PEditor.widgets.verticalTabs = H5PEditor.VerticalTabs = (function ($) {
+
   /**
    * Initialize widget.
    *
@@ -29,6 +30,11 @@ H5PEditor.widgets.verticalTabs = H5PEditor.VerticalTabs = (function ($) {
       this.params = params;
     }
 
+    if (field.defaultNum === undefined && field.min !== undefined) {
+      // Use min as defaultNum if defaultNum isn't set.
+      field.defaultNum = field.min;
+    }
+
     this.field = field;
     this.parent = parent;
     this.$items = [];
@@ -39,7 +45,7 @@ H5PEditor.widgets.verticalTabs = H5PEditor.VerticalTabs = (function ($) {
     parent.ready(function () {
       that.passReadies = false;
     });
-  };
+  }
 
   /**
    * Append field to wrapper.
@@ -65,20 +71,22 @@ H5PEditor.widgets.verticalTabs = H5PEditor.VerticalTabs = (function ($) {
       if (that.field.max !== undefined && that.params.length === that.field.max) {
         return;
       }
-      var index = that.params.length;
+      var index = that.children.length;
       that.add(index);
       that.open(index);
     });
 
-    for (var i = 0; i < this.params.length; i++) {
-      this.add(i);
+    var i;
+    if (this.params.length) {
+      for (i = 0; i < this.params.length; i++) {
+        this.add(i);
+      }
     }
-
-    // Add min. fields.
-    var missing = this.field.min - this.params.length;
-    while (missing > 0) {
-      that.$add.click();
-      missing--;
+    else {
+      // Add default number of fields.
+      for (i = 0; i < this.field.defaultNum; i++) {
+        that.$add.click();
+      }
     }
   };
 
@@ -235,13 +243,15 @@ H5PEditor.widgets.verticalTabs = H5PEditor.VerticalTabs = (function ($) {
       top: y - that.formOffset.top
     });
 
+    var oldIndex, newIndex, $form;
+
     // Try to move up.
     var $prev = that.$tab.prev();
     if ($prev.length && y < $prev.offset().top + ($prev.height() / 2)) {
-      var oldIndex = that.$tab.index();
-      var newIndex = oldIndex - 1;
+      oldIndex = that.$tab.index();
+      newIndex = oldIndex - 1;
       $prev.insertAfter(that.$placeholder);
-      var $form = that.$forms.children(':eq(' + oldIndex + ')');
+      $form = that.$forms.children(':eq(' + oldIndex + ')');
       $form.prev().insertAfter($form);
       that.swap(that.params, oldIndex, newIndex);
       that.swap(that.children, oldIndex, newIndex);
@@ -251,10 +261,10 @@ H5PEditor.widgets.verticalTabs = H5PEditor.VerticalTabs = (function ($) {
     // Try to move down.
     var $next = that.$tab.next().next();
     if ($next.length && y + that.$tab.height() > $next.offset().top + ($next.height() / 2)) {
-      var oldIndex = that.$tab.index();
-      var newIndex = oldIndex + 1;
+      oldIndex = that.$tab.index();
+      newIndex = oldIndex + 1;
       $next.insertBefore(that.$tab);
-      var $form = that.$forms.children(':eq(' + oldIndex + ')');
+      $form = that.$forms.children(':eq(' + oldIndex + ')');
       $form.next().insertBefore($form);
       that.swap(that.params, oldIndex, newIndex);
       that.swap(that.children, oldIndex, newIndex);
