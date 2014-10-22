@@ -149,7 +149,7 @@ H5PEditor.widgets.verticalTabs = H5PEditor.VerticalTabs = (function ($) {
     if (item instanceof ns.Group) {
       item.expand();
     }
-    else if (this.field.field.type === 'library') {
+    else if (field.type === 'library') {
       item.changes.push(function (library) {
         var libraryTitle;
 
@@ -163,6 +163,14 @@ H5PEditor.widgets.verticalTabs = H5PEditor.VerticalTabs = (function ($) {
 
         $label.text(libraryTitle);
       });
+    }
+    else if (field.type === 'select') {
+      var change = function () {
+        var value = item.$select.val();
+        $label.text(value === '-' ? C.UCFirst(that.field.entity) : item.$select.children('option[value="' + value + '"]').text());
+      };
+      item.$select.change(change);
+      change();
     }
   };
 
