@@ -107,8 +107,15 @@ H5PEditor.widgets.verticalTabs = H5PEditor.VerticalTabs = (function ($) {
       this.readies = [];
     }
 
-    var widget = this.field.field.widget === undefined ? this.field.field.type : this.field.field.widget;
-    var item = this.children[index] = new H5PEditor.widgets[widget](this, this.field.field, this.params[index], function (field, value) {
+    var field = this.field.field;
+    var widget = field.widget === undefined ? field.type : field.widget;
+
+    // Set default value.
+    if (this.params[index] === undefined && field['default'] !== undefined) {
+      this.params[index] = field['default'];
+    }
+
+    var item = this.children[index] = new H5PEditor.widgets[widget](this, field, this.params[index], function (field, value) {
       that.params[$tab.index()] = value;
     });
     item.appendTo($form);
