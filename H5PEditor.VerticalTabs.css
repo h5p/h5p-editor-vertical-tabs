@@ -7,7 +7,7 @@
 .h5p-vtabs {
   float: left;
   width: 195px;
-  position: relative;  
+  position: relative;
   padding-left: 10px;
   padding-top: 10px;
 }
@@ -42,19 +42,19 @@
   left: 180px;
   top: 0;
   content: " ";
-  width: 0; 
+  width: 0;
   height: 0;
 }
-.h5p-vtab-li.h5p-current:after { 
+.h5p-vtab-li.h5p-current:after {
   border-top: 16px solid transparent;
   border-bottom: 16px solid transparent;
-  border-left: 16px solid #f4f4f4;  
+  border-left: 16px solid #f5f5f5;
 }
 .h5p-vtab-li.h5p-current:before {
   top: -1px;
   border-top: 17px solid transparent;
   border-bottom: 17px solid transparent;
-  border-left: 17px solid #333;
+  border-left: 17px solid #ccc;
 }
 .h5p-vtab-li:first-child:after {
   top: 1px;
@@ -64,23 +64,24 @@
 }
 
 .h5p-vtab-a {
+  color: #333;
   margin-right: 14px;
   display: block;
   white-space: nowrap;
   padding: 6px 4px 7px 26px;
   background: #ddd;
-  border-bottom: 1px solid #666;
-  border-right: 1px solid #666;
-  border-left: 1px solid #666;
+  border-bottom: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  border-left: 1px solid #ccc;
   font-size: 14px;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 .h5p-vtab-li:first-child .h5p-vtab-a {
-  border-top: 1px solid #666;
+  border-top: 1px solid #ccc;
 }
 .h5p-vtab-li.h5p-current .h5p-vtab-a {
-  background: #f4f4f4;
+  background: #f5f5f5;
   border-right: 0;
   margin-right: 15px;
 }
@@ -94,7 +95,7 @@
 }
 .h5p-vtab-a:hover {
   text-decoration: none;
-  background: #e9edf4;
+  background: #f5f5f5;
 }
 .h5p-vtabs > input[type="button"] {
   float: right;
@@ -144,7 +145,7 @@
   z-index: 1;
 }
 .h5p-vtabs .h5p-moving > .h5p-vtab-a {
-  border-top: 1px solid #333;
+  border-top: 1px solid #ccc;
   margin-top: -1px;
 }
 .h5p-vtabs .h5p-moving:first-child > .h5p-vtab-a {
