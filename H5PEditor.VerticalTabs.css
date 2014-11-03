@@ -18,6 +18,8 @@
   position: relative;
   display: none;
   padding: 10px;
+  margin: 0;
+  border: none;
 }
 .h5p-vtab-form.h5p-current {
   display: block;
