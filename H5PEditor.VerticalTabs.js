@@ -101,7 +101,7 @@ H5PEditor.widgets.verticalTabs = H5PEditor.VerticalTabs = (function ($) {
 
     var current = (index === 0 ? ' h5p-current' : '');
     var $tab = $('<li class="h5p-vtab-li' + current + '"><a href="#" class="h5p-order"></a><a href="#" class="h5p-vtab-a"><span class="h5p-index-label">' + (index + 1) + '</span>. <span class="h5p-label">' + C.UCFirst(this.field.entity) + '</span></a></li>').appendTo(this.$tabs);
-    var $form = $('<div class="h5p-vtab-form' + current + '"></div>').appendTo(this.$forms);
+    var $form = $('<fieldset class="h5p-vtab-form' + current + '"></fieldset>').appendTo(this.$forms);
 
     if (!this.passReadies) {
       this.readies = [];
