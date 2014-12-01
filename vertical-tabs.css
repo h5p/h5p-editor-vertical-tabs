@@ -97,7 +97,7 @@
   text-decoration: none;
   background: #f5f5f5;
 }
-.h5p-vtabs > input[type="button"] {
+.h5p-vtabs > button {
   float: right;
   margin: 8px 14px 8px 8px;
 }
