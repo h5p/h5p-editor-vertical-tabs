@@ -77,6 +77,7 @@
   border-left: 1px solid #ccc;
   font-size: 14px;
   overflow: hidden;
+  cursor: pointer;
   text-overflow: ellipsis;
 }
 .h5p-vtab-li:first-child .h5p-vtab-a {
