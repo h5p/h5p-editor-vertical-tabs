@@ -234,7 +234,7 @@ H5PEditor.VerticalTabs = (function ($) {
       }).appendTo($tab);
 
       // Create form wrapper
-      var $form = $('<div/>', {
+      var $form = $('<fieldset/>', {
         'class': 'h5p-vtab-form'
       });
 
