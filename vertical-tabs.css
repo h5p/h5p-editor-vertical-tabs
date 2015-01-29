@@ -58,15 +58,15 @@
   height: 0;
 }
 .h5p-vtab-li.h5p-current:after {
-  border-top: 16px solid transparent;
-  border-bottom: 16px solid transparent;
-  border-left: 16px solid #f5f5f5;
+  border-top: 14px solid transparent;
+  border-bottom: 15px solid transparent;
+  border-left: 15px solid #f5f5f5;
 }
 .h5p-vtab-li.h5p-current:before {
   top: -1px;
-  border-top: 17px solid transparent;
-  border-bottom: 17px solid transparent;
-  border-left: 17px solid #ccc;
+  border-top: 15px solid transparent;
+  border-bottom: 16px solid transparent;
+  border-left: 16px solid #ccc;
 }
 .h5p-vtab-li:first-child:after {
   top: 1px;
@@ -89,6 +89,7 @@
   overflow: hidden;
   cursor: pointer;
   text-overflow: ellipsis;
+  outline: none;
 }
 .h5p-vtab-li:first-child .h5p-vtab-a {
   border-top: 1px solid #ccc;
