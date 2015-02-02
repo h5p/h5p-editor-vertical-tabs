@@ -285,6 +285,15 @@ H5PEditor.VerticalTabs = (function ($) {
         item.changes.push(function (library) {
           $tab.find('.h5p-label').text(library.title);
         });
+        if (item.currentLibrary) {
+          for (var i = 0; i < item.libraries.length; i++) {
+            //console.log(item.libraries[i].uberName, item.currentLibrary);
+            if (item.libraries[i].uberName === item.currentLibrary) {
+              $tab.find('.h5p-label').text(item.libraries[i].title);
+              break;
+            }
+          }
+        }
       }
       else if (item instanceof H5PEditor.Select) {
         // Use selected value as title
