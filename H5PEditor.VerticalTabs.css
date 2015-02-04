@@ -4,6 +4,14 @@
   background: #fff;
   margin: 0.25em 0;
 }
+.h5p-vtab-wrapper:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: ' ';
+  clear: both;
+  height: 0;
+}
 .h5p-vtabs {
   float: left;
   width: 195px;
