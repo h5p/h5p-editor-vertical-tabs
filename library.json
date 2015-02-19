@@ -1,23 +1,24 @@
 {
-  "title": "Vertical Tabs",
+  "machineName": "H5PEditor.VerticalTabs",
+  "title": "H5P Editor Vertical Tabs",
+  "license": "MIT",
+  "author": "Joubel AS (icc)",
   "majorVersion": 1,
-  "minorVersion": 0,
-  "patchVersion": 15,
+  "minorVersion": 1,
+  "patchVersion": 0,
+  "runnable": 0,
   "coreApi": {
     "majorVersion": 1,
-    "minorVersion": 0
+    "minorVersion": 4
   },
-  "runnable": 0,
-  "author": "Amendor AS",
-  "machineName": "H5PEditor.VerticalTabs",
   "preloadedJs": [
     {
-      "path": "H5PEditor.VerticalTabs.js"
+      "path": "vertical-tabs.js"
     }
   ],
   "preloadedCss": [
     {
-      "path": "H5PEditor.VerticalTabs.css"
+      "path": "vertical-tabs.css"
     }
   ],
   "preloadedDependencies": [
