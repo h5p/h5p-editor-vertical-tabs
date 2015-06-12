@@ -77,7 +77,7 @@ H5PEditor.VerticalTabs = (function ($) {
       if ($next.length && y + $item.height() > $next.offset().top + ($next.height() / 2)) {
         $next.insertBefore($placeholder);
 
-        currentIndex = $item.index();
+        currentIndex = $item.index() - 2;
         list.moveItem(currentIndex, currentIndex + 1);
       }
     };
