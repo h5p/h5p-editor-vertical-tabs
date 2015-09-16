@@ -2,7 +2,8 @@
 .h5p-vtab-wrapper {
   border: 1px solid #ccc;
   background: #fff;
-  margin: 0.25em 0;
+  margin: 0;
+  padding: 0;
 }
 .h5peditor-widgets > .h5peditor-widget-wrapper > .h5p-vtab-wrapper {
   border: 0;
@@ -23,21 +24,21 @@
   padding-left: 0.5em;
   padding-top: 0.5em;
 }
-.h5peditor-widgets > .h5peditor-widget-wrapper > .h5p-vtab-wrapper > .h5p-vtabs {
+.h5peditor-widgets > .h5peditor-widget-wrapper > .h5p-vtab-wrapper > .h5p-vtabs,
+.h5peditor-widgets > .h5peditor-widget-wrapper > .h5p-vtab-wrapper > .h5p-vtab-forms,
+.h5peditor-widgets > .h5peditor-widget-wrapper > .h5p-vtab-wrapper > .h5p-vtab-form {
   padding: 0;
 }
 .h5p-vtab-forms {
   margin-left: 200px;
+  padding: 0.5em
 }
 .h5p-vtab-form {
   position: relative;
   display: none;
   margin: 0;
-  border: none;
-  padding: 0.5em;
-}
-.h5peditor-widgets > .h5peditor-widget-wrapper > .h5p-vtab-wrapper > .h5p-vtab-form {
   padding: 0;
+  border: none;
 }
 .h5p-vtab-form.h5p-current {
   display: block;
@@ -144,8 +145,8 @@
 }
 .h5p-vtab-form > .h5p-remove {
   position: absolute;
-  right: 20px;
-  top: 15px;
+  right: 10px;
+  top: 7px;
 }
 .h5p-vtab-wrapper .h5p-order {
   position: absolute;
