@@ -163,7 +163,7 @@ H5PEditor.VerticalTabs = (function ($) {
        *
        * @private
        */
-      var down = function () {
+      var down = function (event) {
         if (event.which !== 1) {
           return; // Only allow left mouse button
         }

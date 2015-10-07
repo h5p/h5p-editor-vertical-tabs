@@ -5,7 +5,7 @@
   "author": "Joubel AS (icc)",
   "majorVersion": 1,
   "minorVersion": 1,
-  "patchVersion": 1,
+  "patchVersion": 2,
   "runnable": 0,
   "coreApi": {
     "majorVersion": 1,
@@ -25,7 +25,7 @@
     {
       "machineName": "FontAwesome",
       "majorVersion": 4,
-      "minorVersion": 1
+      "minorVersion": 3
     }
   ]
 }
