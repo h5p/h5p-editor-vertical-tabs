@@ -220,6 +220,8 @@ H5PEditor.VerticalTabs = (function ($) {
         }
       }).appendTo($tab);
 
+      var mouseDownPos;
+
       // Add clickable label
       $('<div/>', {
         'class' : 'h5p-vtab-a',
@@ -227,8 +229,26 @@ H5PEditor.VerticalTabs = (function ($) {
         role: 'button',
         tabIndex: 1,
         on: {
-          click: function () {
-            openTab($tab.add($form));
+          mouseup: function (e) {
+            // Determine movement
+            var xDiff = Math.abs(mouseDownPos.x - e.pageX);
+            var yDiff = Math.abs(mouseDownPos.y - e.pageY);
+            var moveThreshold = 20;
+
+            // Open tab if moved less than threshold
+            if (xDiff < moveThreshold && yDiff < moveThreshold) {
+              openTab($tab.add($form));
+            }
+          },
+          mousedown: function (e) {
+            // Start position
+            mouseDownPos = {
+              x: e.pageX,
+              y: e.pageY
+            };
+
+            // Order element
+            down(e);
           }
         }
       }).appendTo($tab);

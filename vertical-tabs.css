@@ -149,17 +149,24 @@
 }
 .h5p-vtab-wrapper .h5p-order {
   position: absolute;
-  left: 6px;
-  top: 6px;
+  left: 0;
+  cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
 }
 .h5p-vtab-wrapper a.h5p-order:hover {
   text-decoration: none;
 }
 .h5p-vtab-wrapper .h5p-order:before {
-  font-family: 'H5PFontAwesome4';
-  content: "\f0dc";
-  color: #666;
+  font-family: 'H5P';
+  content: "\e600";
+  color: #ccc;
+  font-size: 1.625em;
+  line-height: 1.175;
+  left: -0.2em;
+  position: absolute;
 }
+.h5p-vtab-li:hover .h5p-order:before,
 .h5p-vtab-wrapper .h5p-order:hover:before {
   color: #027AC6;
 }
