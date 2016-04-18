@@ -55,8 +55,14 @@ H5PEditor.VerticalTabs = (function ($) {
 
       // Adjust so the mouse is placed on top of the icon.
       y = y - adjustY;
+      var topPos = y - marginTop - formOffset.top;
+
+      // Min and max caps
+      topPos = topPos <= 0 ? 0 : topPos;
+      topPos = topPos > $tabs.height() ? $tabs.height() : topPos;
+
       $item.css({
-        top: y - marginTop - formOffset.top
+        top: topPos
       });
 
       // Try to move up.
