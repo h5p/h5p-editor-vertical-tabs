@@ -47,18 +47,16 @@ H5PEditor.VerticalTabs = (function ($) {
      * @private
      * @param {jQuery} $item
      * @param {jQuery} $placeholder
-     * @param {Number} x
+     * @param {Number} [x]
      * @param {Number} y
      */
     var moveItem = function ($item, $placeholder, x, y) {
       var currentIndex;
 
       // Adjust so the mouse is placed on top of the icon.
-      x = x - adjustX;
       y = y - adjustY;
       $item.css({
-        top: y - marginTop - formOffset.top,
-        left: x - formOffset.left
+        top: y - marginTop - formOffset.top
       });
 
       // Try to move up.
