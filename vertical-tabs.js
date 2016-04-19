@@ -234,6 +234,10 @@ H5PEditor.VerticalTabs = (function ($) {
         tabIndex: 1,
         on: {
           mouseup: function (e) {
+
+            if (!mouseDownPos) {
+              return;
+            }
             // Determine movement
             var xDiff = Math.abs(mouseDownPos.x - e.pageX);
             var yDiff = Math.abs(mouseDownPos.y - e.pageY);
