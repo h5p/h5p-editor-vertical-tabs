@@ -127,8 +127,7 @@
   float: right;
   margin: 8px 14px 8px 8px;
 }
-.h5p-vtab-wrapper .h5p-remove,
-.h5p-vtab-wrapper .h5p-order {
+.h5p-vtab-wrapper .h5p-remove {
   cursor: pointer;
   width: 14px;
   height: 14px;
@@ -152,21 +151,27 @@
 }
 .h5p-vtab-wrapper .h5p-order {
   position: absolute;
-  left: 6px;
-  top: 6px;
+  box-sizing: border-box;
+  top: 0;
+  cursor: pointer;
+  width: 20px;
+  height: 30px;
+  padding: 3px 0;
 }
 .h5p-vtab-li.h5p-current .h5p-order {
-  top: 7px;
+  top: 1px;
 }
 .h5p-vtab-li:first-child.h5p-current .h5p-order {
-  top: 6px;
+  top: 0;
 }
 .h5p-vtab-wrapper a.h5p-order:hover {
   text-decoration: none;
 }
 .h5p-vtab-wrapper .h5p-order:before {
-  font-family: 'H5PFontAwesome4';
-  content: "\f0dc";
+  margin-left: -4px;
+  font-family: 'H5P';
+  font-size: 1.6em;
+  content: "\e600";
   color: #999;
 }
 .h5p-vtab-wrapper .h5p-order:hover:before {
