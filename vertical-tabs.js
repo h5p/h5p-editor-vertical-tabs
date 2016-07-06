@@ -212,6 +212,10 @@ H5PEditor.VerticalTabs = (function ($) {
           }
         }).insertBefore($tab);
 
+        $('<div/>', {
+          class: 'h5p-vtab-a',
+        }).appendTo($placeholder);
+
         move(event);
         return false;
       };
