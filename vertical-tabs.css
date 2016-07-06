@@ -50,6 +50,13 @@
   margin: 0;
   padding: 0;
 }
+.h5p-placeholder .h5p-vtab-a {
+  box-sizing: border-box;
+  height: 100%;
+}
+.h5p-placeholder:nth-last-child(2) .h5p-vtab-a {
+  border: none;
+}
 .h5p-vtab-li {
   position: relative;
   padding: 0;
@@ -60,6 +67,7 @@
 }
 .h5p-vtab-li.h5p-current {
   position: relative;
+  overflow: hidden;
 }
 .h5p-vtab-li.h5p-current:after, .h5p-vtab-li.h5p-current:before {
   position: absolute;
