@@ -206,9 +206,15 @@ H5PEditor.VerticalTabs = (function ($) {
           'class': 'h5p-placeholder',
           css: {
             width: width,
-            height: height
+            // Height of element with all borders. CSS takes care of layout
+            // when the moving object does not have a top border.
+            height: '31px'
           }
         }).insertBefore($tab);
+
+        $('<div/>', {
+          class: 'h5p-vtab-a',
+        }).appendTo($placeholder);
 
         move(event);
         return false;
