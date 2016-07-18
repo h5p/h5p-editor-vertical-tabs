@@ -163,10 +163,12 @@
   position: absolute;
   box-sizing: border-box;
   top: 0;
-  cursor: pointer;
   width: 20px;
   height: 30px;
   padding: 3px 0;
+  cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
 }
 .h5p-vtab-li.h5p-current .h5p-order {
   top: 1px;
@@ -191,6 +193,12 @@
 .h5p-vtabs .h5p-moving {
   position: absolute;
   z-index: 1;
+}
+.h5p-vtabs .h5p-moving > .h5p-vtab-a,
+.h5p-vtabs .h5p-moving > .h5p-order {
+  cursor: grabbing;
+  cursor: -moz-grabbing;
+  cursor: -webkit-grabbing;
 }
 .h5p-vtabs .h5p-moving > .h5p-vtab-a {
   border-top: 1px solid #ccc;
