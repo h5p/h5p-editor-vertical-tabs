@@ -136,10 +136,12 @@ H5PEditor.VerticalTabs = (function ($) {
        * @private
        */
       var up = function () {
-        H5P.$body
+
+        H5P.$window
           .unbind('mousemove', move)
-          .unbind('mouseup', up)
-          .unbind('mouseleave', up)
+          .unbind('mouseup', up);
+
+        H5P.$body
           .attr('unselectable', 'off')
           .css({
             '-moz-user-select': '',
@@ -169,18 +171,19 @@ H5PEditor.VerticalTabs = (function ($) {
           return; // Only allow left mouse button
         }
 
+        H5P.$window
+          .mousemove(move)
+          .mouseup(up);
+
         // Start tracking mouse
         H5P.$body
           .attr('unselectable', 'on')
-          .mouseup(up)
-          .bind('mouseleave', up)
           .css({
             '-moz-user-select': 'none',
             '-webkit-user-select': 'none',
             'user-select': 'none',
             '-ms-user-select': 'none'
           })
-          .mousemove(move)
           [0].onselectstart = H5P.$body[0].ondragstart = function () {
             return false;
           };
