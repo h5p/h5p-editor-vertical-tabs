@@ -136,7 +136,6 @@ H5PEditor.VerticalTabs = (function ($) {
        * @private
        */
       var up = function () {
-
         H5P.$window
           .unbind('mousemove', move)
           .unbind('mouseup', up);
@@ -217,7 +216,6 @@ H5PEditor.VerticalTabs = (function ($) {
         }).appendTo($placeholder);
 
         move(event);
-        return false;
       };
 
       // Add order button
