@@ -56,6 +56,7 @@ H5PEditor.VerticalTabs = (function ($) {
       // Adjust so the mouse is placed on top of the icon.
       x = x - adjustX;
       y = y - adjustY;
+
       $item.css({
         top: y - marginTop - formOffset.top,
         left: x - formOffset.left
@@ -135,10 +136,12 @@ H5PEditor.VerticalTabs = (function ($) {
        * @private
        */
       var up = function () {
-        H5P.$body
+
+        H5P.$window
           .unbind('mousemove', move)
-          .unbind('mouseup', up)
-          .unbind('mouseleave', up)
+          .unbind('mouseup', up);
+
+        H5P.$body
           .attr('unselectable', 'off')
           .css({
             '-moz-user-select': '',
@@ -168,18 +171,19 @@ H5PEditor.VerticalTabs = (function ($) {
           return; // Only allow left mouse button
         }
 
+        H5P.$window
+          .mousemove(move)
+          .mouseup(up);
+
         // Start tracking mouse
         H5P.$body
           .attr('unselectable', 'on')
-          .mouseup(up)
-          .bind('mouseleave', up)
           .css({
             '-moz-user-select': 'none',
             '-webkit-user-select': 'none',
             'user-select': 'none',
             '-ms-user-select': 'none'
           })
-          .mousemove(move)
           [0].onselectstart = H5P.$body[0].ondragstart = function () {
             return false;
           };
@@ -202,9 +206,15 @@ H5PEditor.VerticalTabs = (function ($) {
           'class': 'h5p-placeholder',
           css: {
             width: width,
-            height: height
+            // Height of element with all borders. CSS takes care of layout
+            // when the moving object does not have a top border.
+            height: '31px'
           }
         }).insertBefore($tab);
+
+        $('<div/>', {
+          class: 'h5p-vtab-a',
+        }).appendTo($placeholder);
 
         move(event);
         return false;
@@ -220,6 +230,8 @@ H5PEditor.VerticalTabs = (function ($) {
         }
       }).appendTo($tab);
 
+      var mouseDownPos;
+
       // Add clickable label
       $('<div/>', {
         'class' : 'h5p-vtab-a',
@@ -227,8 +239,30 @@ H5PEditor.VerticalTabs = (function ($) {
         role: 'button',
         tabIndex: 1,
         on: {
-          click: function () {
-            openTab($tab.add($form));
+          mouseup: function (e) {
+
+            if (!mouseDownPos) {
+              return;
+            }
+            // Determine movement
+            var xDiff = Math.abs(mouseDownPos.x - e.pageX);
+            var yDiff = Math.abs(mouseDownPos.y - e.pageY);
+            var moveThreshold = 20;
+
+            // Open tab if moved less than threshold
+            if (xDiff < moveThreshold && yDiff < moveThreshold) {
+              openTab($tab.add($form));
+            }
+          },
+          mousedown: function (e) {
+            // Start position
+            mouseDownPos = {
+              x: e.pageX,
+              y: e.pageY
+            };
+
+            // Order element
+            down(e);
           }
         }
       }).appendTo($tab);
