@@ -136,7 +136,6 @@ H5PEditor.VerticalTabs = (function ($) {
        * @private
        */
       var up = function () {
-
         H5P.$window
           .unbind('mousemove', move)
           .unbind('mouseup', up);
@@ -147,7 +146,8 @@ H5PEditor.VerticalTabs = (function ($) {
             '-moz-user-select': '',
             '-webkit-user-select': '',
             'user-select': '',
-            '-ms-user-select': ''
+            '-ms-user-select': '',
+            'overflow': '',
           })
           [0].onselectstart = H5P.$body[0].ondragstart = null;
 
@@ -182,7 +182,8 @@ H5PEditor.VerticalTabs = (function ($) {
             '-moz-user-select': 'none',
             '-webkit-user-select': 'none',
             'user-select': 'none',
-            '-ms-user-select': 'none'
+            '-ms-user-select': 'none',
+            'overflow': 'hidden'
           })
           [0].onselectstart = H5P.$body[0].ondragstart = function () {
             return false;
@@ -217,14 +218,11 @@ H5PEditor.VerticalTabs = (function ($) {
         }).appendTo($placeholder);
 
         move(event);
-        return false;
       };
 
       // Add order button
       $('<div/>', {
         'class' : 'h5p-order',
-        role: 'button',
-        tabIndex: 1,
         on: {
           mousedown: down
         }
