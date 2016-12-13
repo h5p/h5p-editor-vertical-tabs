@@ -26,19 +26,20 @@ H5PEditor.VerticalTabs = (function ($) {
     var $tabs = $('<ol/>', {
       'class': 'h5p-ul'
     }).appendTo($inner);
-    var $button = $('<button/>', {
-      text: H5PEditor.t('core', 'addEntity', {':entity': entity}),
-      on: {
-        click: function () {
-          if (list.addItem()) {
-            openTab($tabs.children(':last').add($forms.children(':last')));
-          }
-        }
+    H5PEditor.createButton('add-entity', H5PEditor.t('core', 'addEntity', {':entity': entity}), function () {
+      if (list.addItem()) {
+        openTab($tabs.children(':last').add($forms.children(':last')));
+        toggleOrderButtonsState();
       }
-    }).appendTo($inner);
+    }, true).appendTo($inner);
     var $forms = $('<div/>', {
       'class': 'h5p-vtab-forms'
     }).appendTo($wrapper);
+
+    // Once all items have been added we toggle the state of the order buttons
+    list.once('changeWidget', function () {
+      toggleOrderButtonsState();
+    });
 
     // Used when dragging items around
     var adjustX, adjustY, marginTop, formOffset, $currentTab;
@@ -91,6 +92,23 @@ H5PEditor.VerticalTabs = (function ($) {
     var reindexLabels = function () {
       $tabs.find('.h5p-index-label').each(function (index, element) {
         $(element).text(index + 1);
+      });
+      toggleOrderButtonsState();
+    };
+
+    /**
+     * Always run after reordering, adding or removing to ensure correct
+     * state of the order buttons.
+     *
+     * @private
+     */
+    var toggleOrderButtonsState = function () {
+      $tabs.children().each(function (index, element) {
+        var $tab = $(element);
+        var isTopTab = !$tab.prev().length;
+        $tab.find('.order-up').attr('aria-disabled', isTopTab).attr('tabindex', isTopTab ? '-1' : '0');
+        var isBottomTab = !$tab.next().length;
+        $tab.find('.order-down').attr('aria-disabled', isBottomTab).attr('tabindex', isBottomTab ? '-1' : '0');
       });
     };
 
@@ -204,13 +222,7 @@ H5PEditor.VerticalTabs = (function ($) {
           height: height
         });
         $placeholder = $('<li/>', {
-          'class': 'h5p-placeholder',
-          css: {
-            width: width,
-            // Height of element with all borders. CSS takes care of layout
-            // when the moving object does not have a top border.
-            height: '31px'
-          }
+          'class': 'h5p-placeholder'
         }).insertBefore($tab);
 
         $('<div/>', {
@@ -220,13 +232,39 @@ H5PEditor.VerticalTabs = (function ($) {
         move(event);
       };
 
-      // Add order button
-      $('<div/>', {
-        'class' : 'h5p-order',
-        on: {
-          mousedown: down
+      /**
+       * Order current list item up
+       *
+       * @private
+       */
+      var moveItemUp = function () {
+        var $prev = $tab.prev();
+        if (!$prev.length) {
+          return; // Cannot move item further up
         }
-      }).appendTo($tab);
+
+        var currentIndex = $tab.index();
+        $prev.insertAfter($tab);
+        list.moveItem(currentIndex, currentIndex - 1);
+        reindexLabels();
+      };
+
+      /**
+       * Order current ist item down
+       *
+       * @private
+       */
+      var moveItemDown = function () {
+        var $next = $tab.next();
+        if (!$next.length) {
+          return; // Cannot move item further down
+        }
+
+        var currentIndex = $tab.index();
+        $next.insertBefore($tab);
+        list.moveItem(currentIndex, currentIndex + 1);
+        reindexLabels();
+      };
 
       var mouseDownPos;
 
@@ -235,7 +273,7 @@ H5PEditor.VerticalTabs = (function ($) {
         'class' : 'h5p-vtab-a',
         html: '<span class="h5p-index-label">' + ($tab.index() + 1) + '</span>. <span class="h5p-label">' + entity + '</span>',
         role: 'button',
-        tabIndex: 1,
+        tabIndex: 0,
         on: {
           mouseup: function (e) {
 
@@ -265,6 +303,51 @@ H5PEditor.VerticalTabs = (function ($) {
         }
       }).appendTo($tab);
 
+      // Add buttons for ordering
+      $orderWrapper = $('<div/>', {
+        'class': 'vtab-order-wrapper',
+        appendTo: $tab
+      });
+      H5PEditor.createButton('order-up', H5PEditor.t('core', 'orderItemUp'), moveItemUp).appendTo($orderWrapper);
+      H5PEditor.createButton('order-down', H5PEditor.t('core', 'orderItemDown'), moveItemDown).appendTo($orderWrapper);
+
+      // Add remove button
+      $removeWrapper = $('<div/>', {
+        'class': 'vtab-remove-wrapper',
+        appendTo: $tab
+      });
+      H5PEditor.createButton('remove', H5PEditor.t('core', 'removeItem'), function () {
+        confirmRemovalDialog.show($(this).offset().top);
+      }).appendTo($removeWrapper);
+
+      // Create confirmation dialog for removing list item
+      var confirmRemovalDialog = new H5P.ConfirmationDialog({
+        dialogText: H5PEditor.t('core', 'confirmRemoval', {':type': entity.toLocaleLowerCase()})
+      }).appendTo(document.body);
+
+      // Remove list item on confirmation
+      confirmRemovalDialog.on('confirmed', function () {
+        var $next, index = $tab.index();
+        if (index) {
+          // Go to previous tab
+          $next = $tab.prev().add($form.prev());
+        }
+        else {
+          // Go to next tab
+          $next = $tab.next().add($form.next());
+        }
+
+        if ($next.length) {
+          // Open another tab
+          openTab($next);
+        }
+
+        list.removeItem($tab.index());
+        $tab.remove();
+        $form.remove();
+        reindexLabels();
+      });
+
       // Create form wrapper
       var $form = $('<fieldset/>', {
         'class': 'h5p-vtab-form'
@@ -272,38 +355,6 @@ H5PEditor.VerticalTabs = (function ($) {
 
       // Append new field item to forms wrapper
       item.appendTo($form);
-
-      // Append remove button
-      $('<div/>', {
-        'class' : 'h5p-remove',
-        role: 'button',
-        tabIndex: 1,
-        on: {
-          click: function () {
-            if (confirm(H5PEditor.t('core', 'confirmRemoval', {':type': entity}))) {
-              var $next, index = $tab.index();
-              if (index) {
-                // Go to previous tab
-                $next = $tab.prev().add($form.prev());
-              }
-              else {
-                // Go to next tab
-                $next = $tab.next().add($form.next());
-              }
-
-              if ($next.length) {
-                // Open another tab
-                openTab($next);
-              }
-
-              list.removeItem($tab.index());
-              $tab.remove();
-              $form.remove();
-              reindexLabels();
-            }
-          }
-        }
-      }).prependTo($form);
 
       // Append form wrapper to forms list
       $form.appendTo($forms);
@@ -319,7 +370,6 @@ H5PEditor.VerticalTabs = (function ($) {
         });
         if (item.currentLibrary) {
           for (var i = 0; i < item.libraries.length; i++) {
-            //console.log(item.libraries[i].uberName, item.currentLibrary);
             if (item.libraries[i].uberName === item.currentLibrary) {
               $tab.find('.h5p-label').text(item.libraries[i].title);
               break;
