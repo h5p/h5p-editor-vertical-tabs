@@ -1,13 +1,3 @@
-
-.h5p-vtab-wrapper {
-  border: 1px solid #ccc;
-  background: #fff;
-  margin: 0.25em 0;
-}
-.h5peditor-widgets > .h5peditor-widget-wrapper > .h5p-vtab-wrapper {
-  border: 0;
-  margin: 0;
-}
 .h5p-vtab-wrapper:after {
   visibility: hidden;
   display: block;
@@ -20,10 +10,6 @@
   float: left;
   width: 212px;
   position: relative;
-  padding-left: 0.5em;
-  padding-top: 0.5em;
-}
-.h5peditor-widgets > .h5peditor-widget-wrapper > .h5p-vtab-wrapper > .h5p-vtabs {
   padding: 0;
 }
 .h5p-vtab-forms {
@@ -34,9 +20,6 @@
   display: none;
   margin: 0;
   border: none;
-  padding: 0.5em;
-}
-.h5peditor-widgets > .h5peditor-widget-wrapper > .h5p-vtab-wrapper > .h5p-vtab-form {
   padding: 0;
 }
 .h5p-vtab-form.h5p-current {
@@ -88,12 +71,6 @@
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-/*
-.h5p-vtab-a:hover {
-  text-decoration: none;
-  background: #f5f5f5;
-}
-*/
 .h5p-vtab-li.h5p-current .h5p-vtab-a {
   background: #747275;
   border: 1px solid #636164;
@@ -199,9 +176,6 @@
 .vtab-remove-wrapper > .remove:hover:after {
   opacity: 1;
 }
-.vtab-remove-wrapper > .remove:before {
-
-}
 
 .h5peditor-button.add-entity {
   width: 200px;
@@ -225,4 +199,12 @@
   content: "\e902";
   margin-right: 8px;
   font-weight: 400;
+}
+
+.h5p-vtab-form > .group > .content {
+  border-top: 1px solid #D0D0D1;
+  padding: 10px;
+}
+.h5p-vtab-form > .library {
+  padding: 10px;
 }

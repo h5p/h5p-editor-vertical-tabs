@@ -362,6 +362,7 @@ H5PEditor.VerticalTabs = (function ($) {
       // Good UX: automatically expand groups
       if (item instanceof H5PEditor.Group) {
         item.expand();
+        item.$group.children('.title').remove();
       }
       else if (item instanceof H5PEditor.Library) {
         // Use selected library as title
