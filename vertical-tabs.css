@@ -37,15 +37,15 @@
 .h5p-vtab-li.h5p-current:after,
 .h5p-vtab-li.h5p-current:before {
   position: absolute;
-  left: 199px;
+  left: 200px;
   content: " ";
   width: 0;
   height: 0;
 }
 .h5p-vtab-li.h5p-current:before {
-  top: -1px;
-  border-top: 21px solid transparent;
-  border-bottom: 21px solid transparent;
+  top: 0;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
   border-left: 13px solid #636164;;
 }
 .h5p-vtab-li.h5p-current:after {
@@ -74,6 +74,7 @@
 .h5p-vtab-li.h5p-current .h5p-vtab-a {
   background: #747275;
   border: 1px solid #636164;
+  border-right: 0;
   color: #fff;
 }
 .h5p-placeholder > .h5p-vtab-a {
