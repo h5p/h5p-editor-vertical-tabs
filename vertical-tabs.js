@@ -28,7 +28,7 @@ H5PEditor.VerticalTabs = (function ($) {
     }).appendTo($inner);
     H5PEditor.createButton('add-entity', H5PEditor.t('core', 'addEntity', {':entity': entity}), function () {
       if (list.addItem()) {
-        openTab($tabs.children(':last').add($forms.children(':last')));
+        $tabs.children(':last').trigger('open');
         toggleOrderButtonsState();
       }
     }, true).appendTo($inner);
@@ -67,6 +67,7 @@ H5PEditor.VerticalTabs = (function ($) {
       var $prev = $item.prev().prev();
       if ($prev.length && y < $prev.offset().top + ($prev.height() / 2)) {
         $prev.insertAfter($item);
+
 
         currentIndex = $item.index();
         list.moveItem(currentIndex, currentIndex - 1);
@@ -266,6 +267,11 @@ H5PEditor.VerticalTabs = (function ($) {
         reindexLabels();
       };
 
+      // Handle opening of the tab
+      $tab.on('open', function () {
+        openTab($tab.add($form));
+      });
+
       var mouseDownPos;
 
       // Add clickable label
@@ -287,7 +293,7 @@ H5PEditor.VerticalTabs = (function ($) {
 
             // Open tab if moved less than threshold
             if (xDiff < moveThreshold && yDiff < moveThreshold) {
-              openTab($tab.add($form));
+              $tab.trigger('open');
             }
           },
           mousedown: function (e) {
@@ -339,7 +345,7 @@ H5PEditor.VerticalTabs = (function ($) {
 
         if ($next.length) {
           // Open another tab
-          openTab($next);
+          $next.trigger('open');
         }
 
         list.removeItem($tab.index());
@@ -390,7 +396,7 @@ H5PEditor.VerticalTabs = (function ($) {
 
       if ($currentTab === undefined) {
         // Open tab if there are none open
-        openTab($tab.add($form));
+        $tab.trigger('open');
       }
     };
 
