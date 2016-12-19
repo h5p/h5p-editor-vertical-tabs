@@ -305,6 +305,12 @@ H5PEditor.VerticalTabs = (function ($) {
 
             // Order element
             down(e);
+          },
+          keypress: function (e) {
+            if (e.which === 32) {
+              e.preventDefault();
+              $tab.trigger('open');
+            }
           }
         }
       }).appendTo($tab);
