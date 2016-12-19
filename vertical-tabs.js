@@ -365,6 +365,15 @@ H5PEditor.VerticalTabs = (function ($) {
         'class': 'h5p-vtab-form'
       });
 
+      if (item instanceof H5PEditor.Group) {
+        item.on('summary', function (event) {
+          if (event.data) {
+            // Update tab with summary
+            $tab.find('.h5p-label').text(event.data.substr(0, 32));
+          }
+        });
+      }
+
       // Append new field item to forms wrapper
       item.appendTo($form);
 
@@ -374,6 +383,8 @@ H5PEditor.VerticalTabs = (function ($) {
       // Good UX: automatically expand groups
       if (item instanceof H5PEditor.Group) {
         item.expand();
+
+        // Remove group title
         item.$group.children('.title').remove();
       }
       else if (item instanceof H5PEditor.Library) {
