@@ -342,21 +342,24 @@ H5PEditor.VerticalTabs = (function ($) {
       // Remove list item on confirmation
       confirmRemovalDialog.on('confirmed', function () {
         var $next, index = $tab.index();
-        if (index) {
-          // Go to previous tab
-          $next = $tab.prev().add($form.prev());
-        }
-        else {
-          // Go to next tab
-          $next = $tab.next().add($form.next());
+
+        if ($tab.hasClass('h5p-current')) {
+          if (index) {
+            // Go to previous tab
+            $next = $tab.prev().add($form.prev());
+          }
+          else {
+            // Go to next tab
+            $next = $tab.next().add($form.next());
+          }
+
+          if ($next.length) {
+            // Open another tab
+            $next.trigger('open');
+          }
         }
 
-        if ($next.length) {
-          // Open another tab
-          $next.trigger('open');
-        }
-
-        list.removeItem($tab.index());
+        list.removeItem(index);
         $tab.remove();
         $form.remove();
         reindexLabels();
