@@ -122,6 +122,7 @@ H5PEditor.VerticalTabs = (function ($) {
      */
     var openTab = function ($newTab) {
       if ($currentTab !== undefined) {
+        H5PEditor.Html.removeWysiwyg();
         $currentTab.removeClass('h5p-current');
       }
       $newTab.addClass('h5p-current');
