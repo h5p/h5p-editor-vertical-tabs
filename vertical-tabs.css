@@ -209,6 +209,8 @@
   border-top: 1px solid #D0D0D1;
   padding: 10px;
 }
+
 .h5p-vtab-form > .library {
   padding: 10px;
+  border: 1px solid #D0D0D1;
 }
