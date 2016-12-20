@@ -24,6 +24,7 @@ H5PEditor.VerticalTabs = (function ($) {
       'class': 'h5p-vtabs'
     }).appendTo($wrapper);
     var $tabs = $('<ol/>', {
+      'role': 'tablist',
       'class': 'h5p-ul'
     }).appendTo($inner);
     H5PEditor.createButton('add-entity', H5PEditor.t('core', 'addEntity', {':entity': entity}), function () {
@@ -278,7 +279,7 @@ H5PEditor.VerticalTabs = (function ($) {
       $('<div/>', {
         'class' : 'h5p-vtab-a',
         html: '<span class="h5p-index-label">' + ($tab.index() + 1) + '</span>. <span class="h5p-label">' + entity + '</span>',
-        role: 'button',
+        role: 'tab',
         tabIndex: 0,
         on: {
           mouseup: function (e) {
@@ -362,6 +363,7 @@ H5PEditor.VerticalTabs = (function ($) {
 
       // Create form wrapper
       var $form = $('<fieldset/>', {
+        'role': 'tabpanel',
         'class': 'h5p-vtab-form'
       });
 

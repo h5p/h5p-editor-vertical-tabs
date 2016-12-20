@@ -1,0 +1,38 @@
+$french-gray: #d0d0d1;
+$regent-gray: #828f9d;
+$rolling-stone: #7b8188;
+$shuttle-gray: #57636e;
+$pale-sky: #677786;
+$iron: #D0D3D8;
+$danube: #488ac9;
+$san-marino: #3b71a5;
+
+// general
+$border: $french-gray;
+
+// tabs
+$tabs-width: 212px;
+
+// tab colors
+$tab-border: $border;
+$tab-background: white;
+$tab-order-background: $regent-gray;
+$tab-order-background-hover: darken($tab-order-background, 10%);;
+$tab-button-remove: $rolling-stone;
+
+// active tab colors
+$tab-active-border: $shuttle-gray;
+$tab-active-background: $pale-sky;
+$tab-active-order-background: $shuttle-gray;
+$tab-active-order-background-hover: darken($tab-active-order-background, 10%);
+$tab-active-button-remove: $iron;
+
+//
+$tab-dropzone-border: #2782d1;
+$tab-dropzone-background: #e8f2fa;
+
+// add button
+$button-add-background: $danube;
+$button-add-background-hover: $san-marino;
+$button-add-color: white;
+$button-add-border: darken($button-add-background, 10%);
