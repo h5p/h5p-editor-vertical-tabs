@@ -69,8 +69,8 @@
 
 /* line 60, ../scss/vertical-tabs.scss */
 .h5p-vtabs .h5p-vtab-li.h5p-current .h5p-vtab-a {
-  background: #677786;
-  border: 1px solid #57636e;
+  background: #747275;
+  border: 1px solid #636164;
   border-right: 0;
   color: white;
 }
@@ -87,24 +87,24 @@
   top: 0;
   border-top: 20px solid transparent;
   border-bottom: 20px solid transparent;
-  border-left: 13px solid #57636e;
+  border-left: 13px solid #636164;
 }
 /* line 83, ../scss/vertical-tabs.scss */
 .h5p-vtabs .h5p-vtab-li.h5p-current:after {
   top: 1px;
   border-top: 19px solid transparent;
   border-bottom: 19px solid transparent;
-  border-left: 12px solid #677786;
+  border-left: 12px solid #747275;
 }
 /* line 91, ../scss/vertical-tabs.scss */
 .h5p-vtabs .h5p-vtab-li.h5p-current > .vtab-order-wrapper > .order-up,
 .h5p-vtabs .h5p-vtab-li.h5p-current > .vtab-order-wrapper > .order-down {
-  background: #57636e;
+  background: #636164;
 }
 /* line 95, ../scss/vertical-tabs.scss */
 .h5p-vtabs .h5p-vtab-li.h5p-current > .vtab-order-wrapper > .order-up[aria-disabled="false"]:hover,
 .h5p-vtabs .h5p-vtab-li.h5p-current > .vtab-order-wrapper > .order-down[aria-disabled="false"]:hover {
-  background: #404952;
+  background: #49484a;
 }
 /* line 99, ../scss/vertical-tabs.scss */
 .h5p-vtabs .h5p-vtab-li.h5p-current > .vtab-order-wrapper > .order-up:after,
@@ -148,7 +148,7 @@
 .vtab-order-wrapper > .order-down {
   width: 19px;
   height: 19px;
-  background: #828f9d;
+  background: #d0d0d1;
   font-size: 14px;
   line-height: 19px;
   cursor: pointer;
@@ -157,7 +157,7 @@
 /* line 143, ../scss/vertical-tabs.scss */
 .vtab-order-wrapper > .order-up[aria-disabled="false"]:hover,
 .vtab-order-wrapper > .order-down[aria-disabled="false"]:hover {
-  background-color: #687584;
+  background-color: #b6b6b8;
 }
 /* line 147, ../scss/vertical-tabs.scss */
 .vtab-order-wrapper > .order-up:before,
@@ -209,7 +209,7 @@
 .vtab-remove-wrapper > .remove:after {
   font-family: "H5P";
   content: "\e890";
-  color: #7b8188;
+  color: #454347;
   opacity: 0.7;
   display: inline-block;
   line-height: 38px;
@@ -221,15 +221,15 @@
 
 /* line 204, ../scss/vertical-tabs.scss */
 .h5p-current > .vtab-remove-wrapper > .remove:after {
-  color: #D0D3D8;
+  color: #fff;
 }
 
 /* line 208, ../scss/vertical-tabs.scss */
 .h5peditor-button.add-entity {
   width: 200px;
   height: 40px;
-  background-color: #488ac9;
-  border: 1px solid #3370ab;
+  background: #2579C6 linear-gradient(#3080c9 50%, transparent 50%, transparent);
+  border: 1px solid #1f67a8;
   color: white;
   font-weight: 600;
   font-size: 14px;
@@ -245,11 +245,11 @@
   border-radius: 3px;
   margin-top: 5px;
 }
-/* line 228, ../scss/vertical-tabs.scss */
+/* line 229, ../scss/vertical-tabs.scss */
 .h5peditor-button.add-entity:hover {
-  background-color: #3b71a5;
+  background: #1f67a8 linear-gradient(#2a6fac 50%, transparent 50%, transparent);
 }
-/* line 232, ../scss/vertical-tabs.scss */
+/* line 233, ../scss/vertical-tabs.scss */
 .h5peditor-button.add-entity:before {
   font-family: "H5P";
   content: "\e902";
@@ -257,13 +257,13 @@
   font-weight: 400;
 }
 
-/* line 241, ../scss/vertical-tabs.scss */
+/* line 242, ../scss/vertical-tabs.scss */
 .h5p-vtab-form > .group > .content {
-  border-top: 1px solid #d0d0d1;
+  border-top: 1px solid #FCFCFC;
   padding: 10px;
 }
-/* line 246, ../scss/vertical-tabs.scss */
+/* line 247, ../scss/vertical-tabs.scss */
 .h5p-vtab-form > .library {
   padding: 10px;
-  border: 1px solid #d0d0d1;
+  border: 1px solid #FCFCFC;
 }
