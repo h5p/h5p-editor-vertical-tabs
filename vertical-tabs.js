@@ -394,6 +394,8 @@ H5PEditor.VerticalTabs = (function ($) {
         item.$group.children('.title').remove();
       }
       else if (item instanceof H5PEditor.Library) {
+        $form.addClass('content');
+
         // Use selected library as title
         item.changes.push(function (library) {
           $tab.find('.h5p-label').text(library.title);
