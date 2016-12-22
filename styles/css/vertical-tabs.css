@@ -18,10 +18,11 @@
 
 /* line 18, ../scss/vertical-tabs.scss */
 .h5p-vtab-forms {
+  border: 1px solid #d0d0d1;
   margin-left: 217px;
 }
 
-/* line 21, ../scss/vertical-tabs.scss */
+/* line 22, ../scss/vertical-tabs.scss */
 .h5p-vtab-form {
   position: relative;
   display: none;
@@ -30,17 +31,17 @@
   padding: 0;
 }
 
-/* line 28, ../scss/vertical-tabs.scss */
+/* line 29, ../scss/vertical-tabs.scss */
 .h5p-vtab-form.h5p-current {
   display: block;
 }
 
-/* line 31, ../scss/vertical-tabs.scss */
+/* line 32, ../scss/vertical-tabs.scss */
 .h5p-vtab-form > .field {
   margin: 0;
 }
 
-/* line 34, ../scss/vertical-tabs.scss */
+/* line 35, ../scss/vertical-tabs.scss */
 .h5p-vtabs .h5p-vtab-li,
 .h5p-vtabs .h5p-placeholder {
   position: relative;
@@ -48,10 +49,10 @@
   margin: 0 0 3px 0;
 }
 
-/* line 41, ../scss/vertical-tabs.scss */
+/* line 42, ../scss/vertical-tabs.scss */
 .h5p-vtab-a {
   border: 1px solid #d0d0d1;
-  background: white;
+  background-color: #f5f5f5;
   height: 38px;
   font-size: 14px;
   font-weight: 600;
@@ -67,14 +68,14 @@
   outline: none;
 }
 
-/* line 60, ../scss/vertical-tabs.scss */
+/* line 61, ../scss/vertical-tabs.scss */
 .h5p-vtabs .h5p-vtab-li.h5p-current .h5p-vtab-a {
   background: #747275;
   border: 1px solid #636164;
   border-right: 0;
   color: white;
 }
-/* line 67, ../scss/vertical-tabs.scss */
+/* line 68, ../scss/vertical-tabs.scss */
 .h5p-vtabs .h5p-vtab-li.h5p-current:after, .h5p-vtabs .h5p-vtab-li.h5p-current:before {
   position: absolute;
   left: 200px;
@@ -82,68 +83,68 @@
   width: 0;
   height: 0;
 }
-/* line 76, ../scss/vertical-tabs.scss */
+/* line 77, ../scss/vertical-tabs.scss */
 .h5p-vtabs .h5p-vtab-li.h5p-current:before {
   top: 0;
   border-top: 20px solid transparent;
   border-bottom: 20px solid transparent;
   border-left: 13px solid #636164;
 }
-/* line 83, ../scss/vertical-tabs.scss */
+/* line 84, ../scss/vertical-tabs.scss */
 .h5p-vtabs .h5p-vtab-li.h5p-current:after {
   top: 1px;
   border-top: 19px solid transparent;
   border-bottom: 19px solid transparent;
   border-left: 12px solid #747275;
 }
-/* line 91, ../scss/vertical-tabs.scss */
+/* line 92, ../scss/vertical-tabs.scss */
 .h5p-vtabs .h5p-vtab-li.h5p-current > .vtab-order-wrapper > .order-up,
 .h5p-vtabs .h5p-vtab-li.h5p-current > .vtab-order-wrapper > .order-down {
   background: #636164;
 }
-/* line 95, ../scss/vertical-tabs.scss */
+/* line 96, ../scss/vertical-tabs.scss */
 .h5p-vtabs .h5p-vtab-li.h5p-current > .vtab-order-wrapper > .order-up[aria-disabled="false"]:hover,
 .h5p-vtabs .h5p-vtab-li.h5p-current > .vtab-order-wrapper > .order-down[aria-disabled="false"]:hover {
   background: #49484a;
 }
-/* line 99, ../scss/vertical-tabs.scss */
+/* line 100, ../scss/vertical-tabs.scss */
 .h5p-vtabs .h5p-vtab-li.h5p-current > .vtab-order-wrapper > .order-up:after,
 .h5p-vtabs .h5p-vtab-li.h5p-current > .vtab-order-wrapper > .order-down:after {
   color: white;
 }
 
-/* line 106, ../scss/vertical-tabs.scss */
+/* line 107, ../scss/vertical-tabs.scss */
 .h5p-placeholder > .h5p-vtab-a {
   background: #e8f2fa;
   border: dashed 2px #2782d1;
   height: 36px;
 }
 
-/* line 112, ../scss/vertical-tabs.scss */
+/* line 113, ../scss/vertical-tabs.scss */
 .h5p-vtabs > button {
   float: right;
   margin: 8px 14px 8px 8px;
 }
 
-/* line 117, ../scss/vertical-tabs.scss */
+/* line 118, ../scss/vertical-tabs.scss */
 .h5p-vtabs .h5p-moving {
   position: absolute;
   z-index: 1;
 }
-/* line 121, ../scss/vertical-tabs.scss */
+/* line 122, ../scss/vertical-tabs.scss */
 .h5p-vtabs .h5p-moving > .h5p-vtab-a {
   cursor: grabbing;
   cursor: -moz-grabbing;
   cursor: -webkit-grabbing;
 }
 
-/* line 128, ../scss/vertical-tabs.scss */
+/* line 129, ../scss/vertical-tabs.scss */
 .vtab-order-wrapper {
   position: absolute;
   top: 1px;
   left: 1px;
 }
-/* line 133, ../scss/vertical-tabs.scss */
+/* line 134, ../scss/vertical-tabs.scss */
 .vtab-order-wrapper > .order-up,
 .vtab-order-wrapper > .order-down {
   width: 19px;
@@ -154,50 +155,50 @@
   cursor: pointer;
   text-align: center;
 }
-/* line 143, ../scss/vertical-tabs.scss */
+/* line 144, ../scss/vertical-tabs.scss */
 .vtab-order-wrapper > .order-up[aria-disabled="false"]:hover,
 .vtab-order-wrapper > .order-down[aria-disabled="false"]:hover {
   background-color: #b6b6b8;
 }
-/* line 147, ../scss/vertical-tabs.scss */
+/* line 148, ../scss/vertical-tabs.scss */
 .vtab-order-wrapper > .order-up:before,
 .vtab-order-wrapper > .order-down:before {
   right: auto;
   left: -5px;
 }
-/* line 152, ../scss/vertical-tabs.scss */
+/* line 153, ../scss/vertical-tabs.scss */
 .vtab-order-wrapper > .order-up[aria-disabled="true"],
 .vtab-order-wrapper > .order-down[aria-disabled="true"] {
   cursor: default;
 }
-/* line 155, ../scss/vertical-tabs.scss */
+/* line 156, ../scss/vertical-tabs.scss */
 .vtab-order-wrapper > .order-up[aria-disabled="true"]:after,
 .vtab-order-wrapper > .order-down[aria-disabled="true"]:after {
   opacity: 0.25;
 }
-/* line 161, ../scss/vertical-tabs.scss */
+/* line 162, ../scss/vertical-tabs.scss */
 .vtab-order-wrapper > .order-up:after {
   font-family: "H5P";
   content: "\e58e";
 }
-/* line 166, ../scss/vertical-tabs.scss */
+/* line 167, ../scss/vertical-tabs.scss */
 .vtab-order-wrapper > .order-down {
   top: auto;
   bottom: 1px;
 }
-/* line 170, ../scss/vertical-tabs.scss */
+/* line 171, ../scss/vertical-tabs.scss */
 .vtab-order-wrapper > .order-down:after {
   font-family: "H5P";
   content: "\e58f";
 }
 
-/* line 177, ../scss/vertical-tabs.scss */
+/* line 178, ../scss/vertical-tabs.scss */
 .vtab-remove-wrapper {
   position: absolute;
   top: 1px;
   right: 12px;
 }
-/* line 182, ../scss/vertical-tabs.scss */
+/* line 183, ../scss/vertical-tabs.scss */
 .vtab-remove-wrapper > .remove {
   cursor: pointer;
   width: 1.25em;
@@ -205,7 +206,7 @@
   font-size: 1.75em;
   text-align: center;
 }
-/* line 189, ../scss/vertical-tabs.scss */
+/* line 190, ../scss/vertical-tabs.scss */
 .vtab-remove-wrapper > .remove:after {
   font-family: "H5P";
   content: "\e890";
@@ -214,17 +215,17 @@
   display: inline-block;
   line-height: 38px;
 }
-/* line 197, ../scss/vertical-tabs.scss */
+/* line 198, ../scss/vertical-tabs.scss */
 .vtab-remove-wrapper > .remove:after:hover {
   opacity: 1;
 }
 
-/* line 204, ../scss/vertical-tabs.scss */
+/* line 205, ../scss/vertical-tabs.scss */
 .h5p-current > .vtab-remove-wrapper > .remove:after {
   color: #fff;
 }
 
-/* line 208, ../scss/vertical-tabs.scss */
+/* line 209, ../scss/vertical-tabs.scss */
 .h5peditor-button.add-entity {
   width: 200px;
   height: 40px;
@@ -245,11 +246,11 @@
   border-radius: 3px;
   margin-top: 5px;
 }
-/* line 229, ../scss/vertical-tabs.scss */
+/* line 230, ../scss/vertical-tabs.scss */
 .h5peditor-button.add-entity:hover {
   background: #1f67a8 linear-gradient(#2a6fac 50%, transparent 50%, transparent);
 }
-/* line 233, ../scss/vertical-tabs.scss */
+/* line 234, ../scss/vertical-tabs.scss */
 .h5peditor-button.add-entity:before {
   font-family: "H5P";
   content: "\e902";
@@ -257,12 +258,12 @@
   font-weight: 400;
 }
 
-/* line 242, ../scss/vertical-tabs.scss */
+/* line 243, ../scss/vertical-tabs.scss */
 .h5p-vtab-form > .group > .content {
   border-top: 1px solid #FCFCFC;
   padding: 10px;
 }
-/* line 247, ../scss/vertical-tabs.scss */
+/* line 248, ../scss/vertical-tabs.scss */
 .h5p-vtab-form > .library {
   padding: 10px;
   border: 1px solid #FCFCFC;

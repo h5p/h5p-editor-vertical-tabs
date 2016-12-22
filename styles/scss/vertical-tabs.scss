@@ -16,6 +16,7 @@
   padding: 0;
 }
 .h5p-vtab-forms {
+  border: 1px solid $form-border-color;
   margin-left: $tabs-width + 5px;
 }
 .h5p-vtab-form {
@@ -40,7 +41,7 @@
 
 .h5p-vtab-a {
   border: 1px solid $form-border-color;
-  background: white;
+  background-color: $form-item-importance-low-background;
   height: 38px;
   font-size: 14px;
   font-weight: 600;
