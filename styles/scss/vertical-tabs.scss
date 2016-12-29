@@ -240,13 +240,9 @@
 }
 
 .h5p-vtab-form {
+  > .library,
   > .group > .content {
-    border-top: 1px solid $form-background;
     padding: 10px;
-  }
-
-  > .library {
-    padding: 10px;
-    border: 1px solid $form-background;
+    border: none;
   }
 }

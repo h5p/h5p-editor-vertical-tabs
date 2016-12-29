@@ -259,12 +259,8 @@
 }
 
 /* line 243, ../scss/vertical-tabs.scss */
+.h5p-vtab-form > .library,
 .h5p-vtab-form > .group > .content {
-  border-top: 1px solid #FCFCFC;
   padding: 10px;
-}
-/* line 248, ../scss/vertical-tabs.scss */
-.h5p-vtab-form > .library {
-  padding: 10px;
-  border: 1px solid #FCFCFC;
+  border: none;
 }
