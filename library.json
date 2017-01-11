@@ -9,7 +9,7 @@
   "runnable": 0,
   "coreApi": {
     "majorVersion": 1,
-    "minorVersion": 4
+    "minorVersion": 12
   },
   "preloadedJs": [
     {
@@ -18,7 +18,7 @@
   ],
   "preloadedCss": [
     {
-      "path": "vertical-tabs.css"
+      "path": "styles/css/vertical-tabs.css"
     }
   ],
   "preloadedDependencies": [
