@@ -4,12 +4,12 @@
   "license": "MIT",
   "author": "Joubel AS (icc)",
   "majorVersion": 1,
-  "minorVersion": 2,
-  "patchVersion": 1,
+  "minorVersion": 3,
+  "patchVersion": 0,
   "runnable": 0,
   "coreApi": {
     "majorVersion": 1,
-    "minorVersion": 4
+    "minorVersion": 12
   },
   "preloadedJs": [
     {
@@ -18,7 +18,7 @@
   ],
   "preloadedCss": [
     {
-      "path": "vertical-tabs.css"
+      "path": "styles/css/vertical-tabs.css"
     }
   ],
   "preloadedDependencies": [

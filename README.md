@@ -3,6 +3,16 @@ H5P Editor Vertical Tabs
 
 Makes it eaiser to group editor fields together.
 
+Styles
+======
+
+You can compile the style with compass
+ 
+```bash
+cd styles
+compass compile
+```
+
 ## License
 
 (The MIT License)
