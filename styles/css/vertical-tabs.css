@@ -33,7 +33,8 @@
 
 /* line 29, ../scss/vertical-tabs.scss */
 .h5p-vtab-form.h5p-current {
-  display: block;
+  display: table-column;
+  min-width: 0;
 }
 
 /* line 32, ../scss/vertical-tabs.scss */
