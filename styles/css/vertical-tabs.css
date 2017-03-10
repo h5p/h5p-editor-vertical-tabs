@@ -33,8 +33,13 @@
 
 /* line 29, ../scss/vertical-tabs.scss */
 .h5p-vtab-form.h5p-current {
-  display: table-column;
   min-width: 0;
+  display: block;
+}
+@-moz-document url-prefix() {
+  .h5p-vtab-form.h5p-current {
+    display: table-column;
+  }
 }
 
 /* line 32, ../scss/vertical-tabs.scss */
