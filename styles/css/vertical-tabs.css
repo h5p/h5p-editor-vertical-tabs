@@ -33,13 +33,7 @@
 
 /* line 29, ../scss/vertical-tabs.scss */
 .h5p-vtab-form.h5p-current {
-  min-width: 0;
   display: block;
-}
-@-moz-document url-prefix() {
-  .h5p-vtab-form.h5p-current {
-    display: table-column;
-  }
 }
 
 /* line 32, ../scss/vertical-tabs.scss */
@@ -266,6 +260,7 @@
 
 /* line 243, ../scss/vertical-tabs.scss */
 .h5p-vtab-form > .library,
+.h5p-vtab-form > .list,
 .h5p-vtab-form > .group > .content {
   padding: 10px;
   border: none;
