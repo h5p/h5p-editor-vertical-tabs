@@ -238,7 +238,7 @@
   text-align: center;
   cursor: pointer;
   text-transform: uppercase;
-  line-height: 38px;
+  line-height: 28px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -254,8 +254,11 @@
 .h5peditor-button.add-entity:before {
   font-family: "H5P";
   content: "\e902";
-  margin-right: 8px;
+  margin-right: -4px;
   font-weight: 400;
+  font-size: 24px;
+  transform: translate(-30%,15%);
+  display: inline-block;
 }
 
 /* line 243, ../scss/vertical-tabs.scss */
