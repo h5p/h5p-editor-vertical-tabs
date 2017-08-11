@@ -423,6 +423,8 @@ H5PEditor.VerticalTabs = (function ($) {
         // Open tab if there are none open
         $tab.trigger('open');
       }
+
+      window.parent.document.body.scrollTop = 0;
     };
 
     /**
