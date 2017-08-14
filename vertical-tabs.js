@@ -424,7 +424,7 @@ H5PEditor.VerticalTabs = (function ($) {
         $tab.trigger('open');
       }
 
-      window.parent.document.body.scrollTop = 0;
+      $tabs.find('.h5p-vtab-li .h5p-vtab-a').first().focus();
     };
 
     /**
