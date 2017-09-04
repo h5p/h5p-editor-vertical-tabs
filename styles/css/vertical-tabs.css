@@ -33,13 +33,7 @@
 
 /* line 29, ../scss/vertical-tabs.scss */
 .h5p-vtab-form.h5p-current {
-  min-width: 0;
   display: block;
-}
-@-moz-document url-prefix() {
-  .h5p-vtab-form.h5p-current {
-    display: table-column;
-  }
 }
 
 /* line 32, ../scss/vertical-tabs.scss */
@@ -244,7 +238,7 @@
   text-align: center;
   cursor: pointer;
   text-transform: uppercase;
-  line-height: 38px;
+  line-height: 28px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -260,12 +254,16 @@
 .h5peditor-button.add-entity:before {
   font-family: "H5P";
   content: "\e902";
-  margin-right: 8px;
+  margin-right: -4px;
   font-weight: 400;
+  font-size: 24px;
+  transform: translate(-30%,15%);
+  display: inline-block;
 }
 
 /* line 243, ../scss/vertical-tabs.scss */
 .h5p-vtab-form > .library,
+.h5p-vtab-form > .list,
 .h5p-vtab-form > .group > .content {
   padding: 10px;
   border: none;

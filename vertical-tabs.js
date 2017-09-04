@@ -423,6 +423,8 @@ H5PEditor.VerticalTabs = (function ($) {
         // Open tab if there are none open
         $tab.trigger('open');
       }
+
+      $tabs.find('.h5p-vtab-li .h5p-vtab-a').first().focus();
     };
 
     /**
