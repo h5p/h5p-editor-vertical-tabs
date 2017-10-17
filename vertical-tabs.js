@@ -104,7 +104,7 @@ H5PEditor.VerticalTabs = (function ($) {
      *
      * @private
      */
-    var toggleOrderButtonsState = function () {
+    var toggleOrderButtonsState = function () {
       $tabs.children().each(function (index, element) {
         var $tab = $(element);
         var isTopTab = !$tab.prev().length;
@@ -169,8 +169,7 @@ H5PEditor.VerticalTabs = (function ($) {
             'user-select': '',
             '-ms-user-select': '',
             'overflow': '',
-          })
-          [0].onselectstart = H5P.$body[0].ondragstart = null;
+          })[0].onselectstart = H5P.$body[0].ondragstart = null;
 
         $tab.removeClass('h5p-moving').css({
           width: 'auto',
@@ -205,8 +204,7 @@ H5PEditor.VerticalTabs = (function ($) {
             'user-select': 'none',
             '-ms-user-select': 'none',
             'overflow': 'hidden'
-          })
-          [0].onselectstart = H5P.$body[0].ondragstart = function () {
+          })[0].onselectstart = H5P.$body[0].ondragstart = function () {
             return false;
           };
 
@@ -318,7 +316,7 @@ H5PEditor.VerticalTabs = (function ($) {
       }).appendTo($tab);
 
       // Add buttons for ordering
-      $orderWrapper = $('<div/>', {
+      var $orderWrapper = $('<div/>', {
         'class': 'vtab-order-wrapper',
         appendTo: $tab
       });
@@ -326,7 +324,7 @@ H5PEditor.VerticalTabs = (function ($) {
       H5PEditor.createButton('order-down', H5PEditor.t('core', 'orderItemDown'), moveItemDown).appendTo($orderWrapper);
 
       // Add remove button
-      $removeWrapper = $('<div/>', {
+      var $removeWrapper = $('<div/>', {
         'class': 'vtab-remove-wrapper',
         appendTo: $tab
       });
