@@ -317,6 +317,12 @@ H5PEditor.VerticalTabs = (function ($) {
         }
       }).appendTo($tab);
 
+      var $tabLabel = $tab.find('.h5p-label');
+
+      var setTabLabel = function(label) {
+        $tabLabel.text(label).attr('title', label);
+      };
+
       // Add buttons for ordering
       $orderWrapper = $('<div/>', {
         'class': 'vtab-order-wrapper',
@@ -375,7 +381,7 @@ H5PEditor.VerticalTabs = (function ($) {
         item.on('summary', function (event) {
           if (event.data) {
             // Update tab with summary
-            $tab.find('.h5p-label').text(event.data.substr(0, 32));
+            setTabLabel(event.data.substr(0, 32));
           }
         });
       }
@@ -398,12 +404,12 @@ H5PEditor.VerticalTabs = (function ($) {
 
         // Use selected library as title
         item.changes.push(function (library) {
-          $tab.find('.h5p-label').text(library.title);
+          setTabLabel(library.title);
         });
         if (item.currentLibrary) {
           for (var i = 0; i < item.libraries.length; i++) {
             if (item.libraries[i].uberName === item.currentLibrary) {
-              $tab.find('.h5p-label').text(item.libraries[i].title);
+              setTabLabel(item.libraries[i].title);
               break;
             }
           }
@@ -413,7 +419,7 @@ H5PEditor.VerticalTabs = (function ($) {
         // Use selected value as title
         var change = function () {
           var value = item.$select.val();
-          $tab.find('.h5p-label').text(value === '-' ?  entity : item.$select.children('option[value="' + value + '"]').text());
+          setTabLabel(value === '-' ?  entity : item.$select.children('option[value="' + value + '"]').text());
         };
         item.$select.change(change);
         change();
