@@ -279,7 +279,7 @@ H5PEditor.VerticalTabs = (function ($) {
       // Add clickable label
       $('<div/>', {
         'class' : 'h5p-vtab-a',
-        html: '<span class="h5p-index-label">' + ($tab.index() + 1) + '</span>. <span class="h5p-label">' + entity + '</span>',
+        html: '<span class="h5p-index-label">' + ($tab.index() + 1) + '</span>. <span class="h5p-label" title="' + entity + '">' + entity + '</span>',
         role: 'tab',
         tabIndex: 0,
         on: {
@@ -319,7 +319,7 @@ H5PEditor.VerticalTabs = (function ($) {
 
       var $tabLabel = $tab.find('.h5p-label');
 
-      var setTabLabel = function(label) {
+      var setTabLabel = function (label) {
         $tabLabel.text(label).attr('title', label);
       };
 
