@@ -136,6 +136,7 @@ H5PEditor.VerticalTabs = (function ($) {
      * @param {Object} item
      */
     self.addItem = function (item) {
+
       var $placeholder;
       var $tab = $('<li/>', {
         'class': 'h5p-vtab-li'
@@ -400,18 +401,41 @@ H5PEditor.VerticalTabs = (function ($) {
       else if (item instanceof H5PEditor.Library) {
         $form.addClass('content');
 
+        let summary = item.$select.children(':selected').text();
+        if (item.params.metadata && item.params.metadata.title) {
+          // The given title usually makes more sense than the type name
+          summary = item.params.metadata.title + (!item.libraries || (item.libraries.length > 1 && item.params.metadata.title.indexOf(summary) === -1) ? ' (' +  summary + ')' : '');
+        }
+        setTabLabel(summary);
+
         // Use selected library as title
         item.changes.push(function (library) {
           setTabLabel(library.title);
         });
-        if (item.currentLibrary) {
-          for (var i = 0; i < item.libraries.length; i++) {
-            if (item.libraries[i].uberName === item.currentLibrary) {
-              setTabLabel(item.libraries[i].title);
-              break;
-            }
+
+        let lastLib;
+        const setSummary = function () {
+          if (item.params && item.params.metadata && item.params.metadata.title) {
+            // The given title usually makes more sense than the type name
+            setTabLabel(item.params.metadata.title + (item.libraries.length > 1 && item.params.metadata.title.indexOf(lastLib.title) === -1 ? ' (' +  lastLib.title + ')' : ''));
           }
+          else {
+            setTabLabel(lastLib.title);
+          }
+        };
+        if (item.metadataForm) {
+          item.metadataForm.on('titlechange', setSummary);
         }
+        item.change(function (library) {
+          lastLib = library;
+          setSummary();
+
+          if (item.metadataForm) {
+            // Update summary when metadata title changes
+            item.metadataForm.off('titlechange', setSummary);
+            item.metadataForm.on('titlechange', setSummary);
+          }
+        });
       }
       else if (item instanceof H5PEditor.Select) {
         // Use selected value as title
