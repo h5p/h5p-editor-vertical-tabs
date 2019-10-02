@@ -174,7 +174,7 @@
 /* line 156, ../scss/vertical-tabs.scss */
 .vtab-order-wrapper > .order-up[aria-disabled="true"]:after,
 .vtab-order-wrapper > .order-down[aria-disabled="true"]:after {
-  opacity: 0.25;
+  opacity: 0;
 }
 /* line 162, ../scss/vertical-tabs.scss */
 .vtab-order-wrapper > .order-up:after {
@@ -210,22 +210,17 @@
 .vtab-remove-wrapper > .remove:after {
   font-family: "H5P";
   content: "\e890";
-  color: #454347;
-  opacity: 0.7;
+  color: #6f6f71;
   display: inline-block;
   line-height: 38px;
 }
-/* line 198, ../scss/vertical-tabs.scss */
-.vtab-remove-wrapper > .remove:after:hover {
-  opacity: 1;
-}
 
-/* line 205, ../scss/vertical-tabs.scss */
+/* line 200, ../scss/vertical-tabs.scss */
 .h5p-current > .vtab-remove-wrapper > .remove:after {
   color: #fff;
 }
 
-/* line 209, ../scss/vertical-tabs.scss */
+/* line 204, ../scss/vertical-tabs.scss */
 .h5peditor-button.add-entity {
   width: 200px;
   height: 40px;
@@ -238,7 +233,7 @@
   text-align: center;
   cursor: pointer;
   text-transform: uppercase;
-  line-height: 28px;
+  line-height: 38px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -246,22 +241,19 @@
   border-radius: 3px;
   margin-top: 5px;
 }
-/* line 230, ../scss/vertical-tabs.scss */
+/* line 225, ../scss/vertical-tabs.scss */
 .h5peditor-button.add-entity:hover {
   background: #1f67a8 linear-gradient(#2a6fac 50%, transparent 50%, transparent);
 }
-/* line 234, ../scss/vertical-tabs.scss */
+/* line 229, ../scss/vertical-tabs.scss */
 .h5peditor-button.add-entity:before {
   font-family: "H5P";
   content: "\e902";
-  margin-right: -4px;
+  margin-right: 8px;
   font-weight: 400;
-  font-size: 24px;
-  transform: translate(-30%,15%);
-  display: inline-block;
 }
 
-/* line 243, ../scss/vertical-tabs.scss */
+/* line 238, ../scss/vertical-tabs.scss */
 .h5p-vtab-form > .library,
 .h5p-vtab-form > .list,
 .h5p-vtab-form > .group > .content {
