@@ -24,6 +24,8 @@ H5PEditor.VerticalTabs = (function ($) {
       'class': 'h5p-vtabs'
     }).appendTo($wrapper);
     var $tabs = $('<ol/>', {
+      id: list.getId(),
+      'aria-describedby': list.getDescriptionId(),
       'role': 'tablist',
       'class': 'h5p-ul'
     }).appendTo($inner);
