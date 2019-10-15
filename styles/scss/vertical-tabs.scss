@@ -154,7 +154,7 @@
       cursor: default;
 
       &:after {
-        opacity: 0.25;
+        opacity: 0;
       }
     }
   }
@@ -190,14 +190,9 @@
     &:after {
       font-family: "H5P";
       content: "\e890";
-      color: #454347;
-      opacity: 0.7;
+      color: #6f6f71;
       display: inline-block;
       line-height: 38px;
-
-      &:hover {
-        opacity: 1;
-      }
     }
   }
 }
