@@ -412,7 +412,7 @@ H5PEditor.VerticalTabs = (function ($) {
 
         // Use selected library as title
         item.changes.push(function (library) {
-          setTabLabel(library.title);
+          setTabLabel(library ? library.title : '');
         });
 
         let lastLib;
@@ -422,7 +422,7 @@ H5PEditor.VerticalTabs = (function ($) {
             setTabLabel(item.params.metadata.title + (item.libraries.length > 1 && item.params.metadata.title.indexOf(lastLib.title) === -1 ? ' (' +  lastLib.title + ')' : ''));
           }
           else {
-            setTabLabel(lastLib.title);
+            setTabLabel(lastLib ? lastLib.title : '');
           }
         };
         if (item.metadataForm) {
