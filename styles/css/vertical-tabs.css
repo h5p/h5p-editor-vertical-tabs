@@ -249,11 +249,13 @@
 .h5peditor-button.add-entity:before {
   font-family: "H5P";
   content: "\e902";
-  margin-right: 8px;
+  margin-right: 6px;
   font-weight: 400;
+  font-size: 1.5em;
+  vertical-align: bottom;
 }
 
-/* line 238, ../scss/vertical-tabs.scss */
+/* line 240, ../scss/vertical-tabs.scss */
 .h5p-vtab-form > .library,
 .h5p-vtab-form > .list,
 .h5p-vtab-form > .group > .content {
