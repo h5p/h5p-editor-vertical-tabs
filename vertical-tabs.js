@@ -3,6 +3,29 @@ var H5PEditor = H5PEditor || {};
 
 H5PEditor.VerticalTabs = (function ($) {
 
+
+  /**
+   * Utility for checking if any of the parent fields is using the VerticalTabs widget
+   * 
+   * @param {Object} field 
+   * @returns bool
+   */
+  const hasVerticalTabAsParent = function (field) {
+    if (!field) {
+      return false;
+    }
+
+    if (field.widget && field.widget instanceof H5PEditor.VerticalTabs) {
+      return true;
+    }
+
+    if (field.parent) {
+      return hasVerticalTabAsParent(field.parent);
+    }
+
+    return false;
+  }
+
   /**
    * Draws the list.
    *
@@ -11,38 +34,44 @@ H5PEditor.VerticalTabs = (function ($) {
    */
   function VerticalTabs(list) {
     var self = this;
-    var entity = list.getEntity();
 
-    // Make first letter upper case.
-    entity = entity.substr(0,1).toUpperCase() + entity.substr(1);
+    if (hasVerticalTabAsParent(list.parent)) {
+      self.genericList = new H5PEditor.ListEditor(list);
+    }
+    else {
+      var entity = list.getEntity();
 
-    // Create DOM elements
-    var $wrapper = $('<div/>', {
-      'class': 'h5p-vtab-wrapper'
-    });
-    var $inner = $('<div/>', {
-      'class': 'h5p-vtabs'
-    }).appendTo($wrapper);
-    var $tabs = $('<ol/>', {
-      id: list.getId(),
-      'aria-describedby': list.getDescriptionId(),
-      'role': 'tablist',
-      'class': 'h5p-ul'
-    }).appendTo($inner);
-    H5PEditor.createButton('add-entity', H5PEditor.t('core', 'addEntity', {':entity': entity}), function () {
-      if (list.addItem()) {
-        $tabs.children(':last').trigger('open');
+      // Make first letter upper case.
+      entity = entity.substr(0,1).toUpperCase() + entity.substr(1);
+
+      // Create DOM elements
+      var $wrapper = $('<div/>', {
+        'class': 'h5p-vtab-wrapper'
+      });
+      var $inner = $('<div/>', {
+        'class': 'h5p-vtabs'
+      }).appendTo($wrapper);
+      var $tabs = $('<ol/>', {
+        id: list.getId(),
+        'aria-describedby': list.getDescriptionId(),
+        'role': 'tablist',
+        'class': 'h5p-ul'
+      }).appendTo($inner);
+      H5PEditor.createButton('add-entity', H5PEditor.t('core', 'addEntity', {':entity': entity}), function () {
+        if (list.addItem()) {
+          $tabs.children(':last').trigger('open');
+          toggleOrderButtonsState();
+        }
+      }, true).appendTo($inner);
+      var $forms = $('<div/>', {
+        'class': 'h5p-vtab-forms'
+      }).appendTo($wrapper);
+
+      // Once all items have been added we toggle the state of the order buttons
+      list.once('changeWidget', function () {
         toggleOrderButtonsState();
-      }
-    }, true).appendTo($inner);
-    var $forms = $('<div/>', {
-      'class': 'h5p-vtab-forms'
-    }).appendTo($wrapper);
-
-    // Once all items have been added we toggle the state of the order buttons
-    list.once('changeWidget', function () {
-      toggleOrderButtonsState();
-    });
+      });
+    }
 
     // Used when dragging items around
     var adjustX, adjustY, marginTop, formOffset, $currentTab;
@@ -138,6 +167,11 @@ H5PEditor.VerticalTabs = (function ($) {
      * @param {Object} item
      */
     self.addItem = function (item) {
+
+      if (self.genericList) {
+        self.genericList.addItem(item);
+        return;
+      }
 
       var $placeholder;
       var $tab = $('<li/>', {
@@ -464,6 +498,10 @@ H5PEditor.VerticalTabs = (function ($) {
      * @param {jQuery} $container
      */
     self.appendTo = function ($container) {
+      if (self.genericList) {
+        self.genericList.appendTo($container);
+        return;
+      }
       $wrapper.appendTo($container);
     };
 
@@ -473,6 +511,10 @@ H5PEditor.VerticalTabs = (function ($) {
      * @public
      */
     self.remove = function () {
+      if (self.genericList) {
+        self.genericList.remove();
+        return;
+      }
       $wrapper.remove();
     };
   }
