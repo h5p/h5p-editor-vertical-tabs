@@ -130,6 +130,17 @@ H5PEditor.VerticalTabs = (function ($) {
     };
 
     /**
+     * Decode HTML entities
+     * @param {String}
+     * @return {String} 
+     */
+    var decodeEntity = function(inputStr) {
+      var textarea = document.createElement("textarea");
+      textarea.innerHTML = inputStr;
+      return textarea.value;
+    }
+
+    /**
      * Always run after reordering, adding or removing to ensure correct
      * state of the order buttons.
      *
@@ -440,7 +451,7 @@ H5PEditor.VerticalTabs = (function ($) {
         let summary = item.$select.children(':selected').text();
         if (item.params.metadata && item.params.metadata.title) {
           // The given title usually makes more sense than the type name
-          summary = item.params.metadata.title + (!item.libraries || (item.libraries.length > 1 && item.params.metadata.title.indexOf(summary) === -1) ? ' (' +  summary + ')' : '');
+          summary = decodeEntity(item.params.metadata.title) + (!item.libraries || (item.libraries.length > 1 && item.params.metadata.title.indexOf(summary) === -1) ? ' (' +  summary + ')' : '');
         }
         setTabLabel(summary);
 
@@ -453,7 +464,7 @@ H5PEditor.VerticalTabs = (function ($) {
         const setSummary = function () {
           if (item.params && item.params.metadata && item.params.metadata.title) {
             // The given title usually makes more sense than the type name
-            setTabLabel(item.params.metadata.title + (item.libraries.length > 1 && item.params.metadata.title.indexOf(lastLib.title) === -1 ? ' (' +  lastLib.title + ')' : ''));
+            setTabLabel(decodeEntity(item.params.metadata.title) + (item.libraries.length > 1 && item.params.metadata.title.indexOf(lastLib.title) === -1 ? ' (' +  lastLib.title + ')' : ''));
           }
           else {
             setTabLabel(lastLib ? lastLib.title : '');
