@@ -57,12 +57,16 @@ H5PEditor.VerticalTabs = (function ($) {
         'role': 'tablist',
         'class': 'h5p-ul'
       }).appendTo($inner);
-      H5PEditor.createButton('add-entity', H5PEditor.t('core', 'addEntity', {':entity': entity}), function () {
+
+      var $buttonAddEntity = H5PEditor.createButton('add-entity', H5PEditor.t('core', 'addEntity', {':entity': entity}), function () {
         if (list.addItem()) {
           $tabs.children(':last').trigger('open');
           toggleOrderButtonsState();
+          updateButtons();
         }
-      }, true).appendTo($inner);
+      }, true);
+      $buttonAddEntity.appendTo($inner);
+
       var $forms = $('<div/>', {
         'class': 'h5p-vtab-forms'
       }).appendTo($wrapper);
@@ -70,6 +74,7 @@ H5PEditor.VerticalTabs = (function ($) {
       // Once all items have been added we toggle the state of the order buttons
       list.once('changeWidget', function () {
         toggleOrderButtonsState();
+        updateButtons();
       });
     }
 
@@ -127,6 +132,29 @@ H5PEditor.VerticalTabs = (function ($) {
         $(element).text(index + 1);
       });
       toggleOrderButtonsState();
+    };
+
+    /**
+     * Update buttons.
+     *
+     * @private
+     */
+    var updateButtons = function () {
+      if (typeof list.getConfig !== 'function') {
+        return; // Might be older core version
+      }
+
+      // Show remove buttons if more tabs than min
+      if (typeof list.getConfig().min === 'number') {      
+        $tabs.find('.vtab-remove-wrapper')
+          .toggle((list.getValue() || []).length > list.getConfig().min);
+      }
+
+      // Show add button if less tabs than max
+      if (typeof list.getConfig().max === 'number') {
+        $buttonAddEntity
+          .toggle((list.getValue() || []).length < list.getConfig().max);
+      }
     };
 
     /**
@@ -415,6 +443,7 @@ H5PEditor.VerticalTabs = (function ($) {
         $tab.remove();
         $form.remove();
         reindexLabels();
+        updateButtons();
       });
 
       // Create form wrapper
