@@ -8,8 +8,8 @@
     "watch": "webpack --watch"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "H5P",
+  "license": "MIT",
   "dependencies": {
     "css-loader": "^7.1.2",
     "mini-css-extract-plugin": "^2.9.1",
