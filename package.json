@@ -4,7 +4,7 @@
   "description": "H5P Editor Vertical Tabs",
   "main": "vertical-tabs.js",
   "scripts": {
-    "build": "webpack && rm styles/css/index.js",
+    "build": "NODE_ENV=production webpack && rm styles/css/index.js",
     "watch": "webpack --watch"
   },
   "keywords": [],

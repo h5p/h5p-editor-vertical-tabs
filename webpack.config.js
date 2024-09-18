@@ -1,6 +1,8 @@
 const path = require('path');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
+const nodeEnv = process.env.NODE_ENV || 'development';
+
 module.exports = {
   output: {
     path: path.resolve(__dirname, "styles/css")
@@ -8,7 +10,7 @@ module.exports = {
   entry: {
     index: [path.join(path.resolve(__dirname, 'styles'), "scss", "vertical-tabs.scss")]
   },
-  mode: "production",
+  mode: nodeEnv,
   module: {
     rules: [
       {
