@@ -40,15 +40,15 @@
 }
 
 .h5p-vtab-a {
-  border: 1px solid $form-border-color;
-  background-color: $form-item-importance-low-background;
-  height: 38px;
+  // border: 1px solid $form-border-color;
+  background-color: $subtle;
+  height: 48px;
   font-size: 14px;
   font-weight: 600;
-  line-height: 38px;
+  line-height: 48px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  padding: 0 30px;
+  padding: 0 36px;
   margin: 0 12px 0 0;
   cursor: pointer;
   overflow: hidden;
@@ -59,8 +59,7 @@
 
 .h5p-vtabs .h5p-vtab-li.h5p-current {
   .h5p-vtab-a {
-    background: $form-item-importance-medium-background;
-    border: 1px solid $form-item-importance-medium-border-color;
+    background: $primary-dark;
     border-right: 0;
     color: white;
   }
@@ -74,24 +73,24 @@
     height: 0;
   }
 
-  &:before {
-    top: 0;
-    border-top: 20px solid transparent;
-    border-bottom: 20px solid transparent;
-    border-left: 13px solid $form-item-importance-medium-border-color;
-  }
+  // &:before {
+  //   top: 0;
+  //   border-top: 20px solid transparent;
+  //   border-bottom: 20px solid transparent;
+  //   border-left: 13px solid $form-item-importance-medium-border-color;
+  // }
 
   &:after {
-    top: 1px;
-    border-top: 19px solid transparent;
-    border-bottom: 19px solid transparent;
-    border-left: 12px solid $form-item-importance-medium-background;
+    top: 0;
+    border-top: 24px solid transparent;
+    border-bottom: 24px solid transparent;
+    border-left: 12px solid $primary-dark;
   }
 
   > .vtab-order-wrapper {
     > .order-up,
     > .order-down {
-      background: $form-item-importance-medium-border-color;
+      background: $primary-dark;
 
       &[aria-disabled="false"]:hover {
         background: darken($form-item-importance-medium-border-color, 10%);;
@@ -128,21 +127,21 @@
 
 .vtab-order-wrapper {
   position: absolute;
-  top: 1px;
-  left: 1px;
+  top: 0;
+  right: 12px;
 
   > .order-up,
   > .order-down {
-    width: 19px;
-    height: 19px;
-    background: $form-border-color;
+    width: 24px;
+    height: 24px;
+    background: $subtle;
     font-size: 14px;
-    line-height: 19px;
+    line-height: 24px;
     cursor: pointer;
     text-align: center;
 
     &[aria-disabled="false"]:hover {
-      background-color: darken($form-border-color, 10%);
+      background-color: darken($subtle, 10%);
     }
 
     &:before {
@@ -177,13 +176,13 @@
 
 .vtab-remove-wrapper {
   position: absolute;
-  top: 1px;
-  right: 12px;
+  top: 0;
+  left: 0;
 
   > .remove {
     cursor: pointer;
     width: 1.25em;
-    height: 38px;
+    height: 48px;
     font-size: 1.75em;
     text-align: center;
 
@@ -192,7 +191,7 @@
       content: "\e890";
       color: #6f6f71;
       display: inline-block;
-      line-height: 38px;
+      line-height: 48px;
     }
   }
 }

@@ -3,7 +3,7 @@ var H5PEditor = H5PEditor || {};
 
 H5PEditor.VerticalTabs = (function ($) {
 
-
+console.log('tabs');
   /**
    * Utility for checking if any of the parent fields is using the VerticalTabs widget
    * 
@@ -48,6 +48,9 @@ H5PEditor.VerticalTabs = (function ($) {
       var $wrapper = $('<div/>', {
         'class': 'h5p-vtab-wrapper'
       });
+      var $header = $('<div/>', {
+        'class': 'h5p-vtabs-header'
+      }).appendTo($wrapper);
       var $inner = $('<div/>', {
         'class': 'h5p-vtabs'
       }).appendTo($wrapper);
@@ -369,14 +372,6 @@ H5PEditor.VerticalTabs = (function ($) {
         $tabLabel.text(label).attr('title', label);
       };
 
-      // Add buttons for ordering
-      var $orderWrapper = $('<div/>', {
-        'class': 'vtab-order-wrapper',
-        appendTo: $tab
-      });
-      H5PEditor.createButton('order-up', H5PEditor.t('core', 'orderItemUp'), moveItemUp).appendTo($orderWrapper);
-      H5PEditor.createButton('order-down', H5PEditor.t('core', 'orderItemDown'), moveItemDown).appendTo($orderWrapper);
-
       // Add remove button
       var $removeWrapper = $('<div/>', {
         'class': 'vtab-remove-wrapper',
@@ -385,6 +380,14 @@ H5PEditor.VerticalTabs = (function ($) {
       H5PEditor.createButton('remove', H5PEditor.t('core', 'removeItem'), function () {
         confirmRemovalDialog.show($(this).offset().top);
       }).appendTo($removeWrapper);
+
+      // Add buttons for ordering
+      var $orderWrapper = $('<div/>', {
+        'class': 'vtab-order-wrapper',
+        appendTo: $tab
+      });
+      H5PEditor.createButton('order-up', H5PEditor.t('core', 'orderItemUp'), moveItemUp).appendTo($orderWrapper);
+      H5PEditor.createButton('order-down', H5PEditor.t('core', 'orderItemDown'), moveItemDown).appendTo($orderWrapper);
 
       // Create confirmation dialog for removing list item
       var confirmRemovalDialog = new H5P.ConfirmationDialog({
