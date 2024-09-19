@@ -3,7 +3,6 @@ var H5PEditor = H5PEditor || {};
 
 H5PEditor.VerticalTabs = (function ($) {
 
-console.log('tabs');
   /**
    * Utility for checking if any of the parent fields is using the VerticalTabs widget
    * 
@@ -48,18 +47,21 @@ console.log('tabs');
       var $wrapper = $('<div/>', {
         'class': 'h5p-vtab-wrapper'
       });
-      var $header = $('<div/>', {
-        'class': 'h5p-vtabs-header'
-      }).appendTo($wrapper);
       var $inner = $('<div/>', {
         'class': 'h5p-vtabs'
       }).appendTo($wrapper);
+      var $container = $('<div/>', {
+        'class': 'h5p-vtabs-container'
+      }).appendTo($inner);
+      var $header = $('<div/>', {
+        'class': 'h5p-vtabs-header'
+      }).appendTo($container);
       var $tabs = $('<ol/>', {
         id: list.getId(),
         'aria-describedby': list.getDescriptionId(),
         'role': 'tablist',
         'class': 'h5p-ul'
-      }).appendTo($inner);
+      }).appendTo($container);
       H5PEditor.createButton('add-entity', H5PEditor.t('core', 'addEntity', {':entity': entity}), function () {
         if (list.addItem()) {
           $tabs.children(':last').trigger('open');
@@ -73,6 +75,24 @@ console.log('tabs');
       // Once all items have been added we toggle the state of the order buttons
       list.once('changeWidget', function () {
         toggleOrderButtonsState();
+      });
+
+      $header.html('<span>Collapse</span>');
+      var $expandCollapseBtn = $('<button />', {
+        'type': 'button',
+        'aria-label': 'Collapse',
+        'class': 'h5p-vtabs-expand-collapse',
+      }).appendTo($header);
+      
+      var $createBtn = $inner.find('.add-entity');
+      $expandCollapseBtn.on('click', (e) => {
+        e.preventDefault();
+        $inner.toggleClass('is-collapsed');
+        if ($inner.hasClass('is-collapsed')) {
+          $createBtn.text('');
+        } else {
+          $createBtn.text(H5PEditor.t('core', 'addEntity', {':entity': entity}));
+        }
       });
     }
 

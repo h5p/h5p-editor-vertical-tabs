@@ -5,6 +5,16 @@ $form-border-color: #d0d0d1;
 $primary: #1F67A8;
 $primary-dark: #174D7D;
 $subtle: #F5F5F5;
+$border-radius-small: 2px;
+$spacing-xxs: 0.25rem; //4px;
+$spacing-xs: 0.5rem; //8px;
+$spacing-sm: 0.75rem; //12px;
+$spacing-md: 1rem; //16px;
+$spacing-lg: 1.5rem; //24px;
+$spacing-xl: 2rem; //32px;
+$spacing-xxl: 3rem; //48px;
+$spacing-xxxl: 6rem; //96px;
+$tertiary-light: transparent;
 
 // importance high
 $form-item-importance-high-background: #2579C6;
@@ -29,7 +39,42 @@ $form-item-importance-low-background-hover-highlight: #deddde;
 
 // tabs
 $tabs-width: 212px;
+$tabs-width-collapsed: 60px;
 
 // dropzone colors
 $tab-dropzone-border: #2782d1;
 $tab-dropzone-background: #e8f2fa;
+
+
+@mixin button {
+  border-radius: $border-radius-small;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-xs;
+
+  &:hover,
+  &:focus {
+    outline: none;
+  }
+
+  &:focus-visible {
+    outline: revert;
+  }
+}
+
+@mixin button-tertiary {
+  @include button;
+
+  & {
+    border: solid 1px transparent;
+    background: $tertiary-light;
+    color: $primary;
+  }
+
+  &:hover,
+  &:focus-visible {
+    background: $subtle;
+  }
+}

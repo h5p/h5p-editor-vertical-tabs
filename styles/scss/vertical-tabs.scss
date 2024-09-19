@@ -14,7 +14,15 @@
   width: $tabs-width;
   position: relative;
   padding: 0;
+
+  &.is-collapsed {
+    width: $tabs-width-collapsed;
+    + .h5p-vtab-forms {
+      margin-left: $tabs-width-collapsed + 5px;
+    }
+  }
 }
+
 .h5p-vtab-forms {
   border: 1px solid $form-border-color;
   margin-left: $tabs-width + 5px;
@@ -32,11 +40,50 @@
 .h5p-vtab-form > .field {
   margin: 0;
 }
+.h5p-vtabs-container {
+  border: solid 1px $form-border-color;
+  width: calc(100% - 15px);
+}
+.h5p-vtabs-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 48px;
+  padding: 0 0 0 12px;
+
+  > span {
+    flex: 1;
+  }
+
+  .is-collapsed & {
+    padding: 0 12px;
+    justify-content: center;
+    > span {
+      display: none;
+    }
+  }
+}
+
+.h5p-vtabs-expand-collapse {
+  @include button-tertiary;
+  height: 100%;
+  line-height: 1;
+
+  &:before {
+    font-family: "H5P";
+    content: "\e566";
+  }
+
+  .is-collapsed & {
+    transform: rotate(180deg);
+  }
+}
+
 .h5p-vtabs .h5p-vtab-li,
 .h5p-vtabs .h5p-placeholder {
   position: relative;
   padding: 0;
-  margin: 0 0 3px 0;
+  margin: 0;
 }
 
 .h5p-vtab-a {
@@ -49,14 +96,21 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   padding: 0 36px;
-  margin: 0 12px 0 0;
+  margin: 0;
   cursor: pointer;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
   outline: none;
+
+  .is-collapsed & {
+    padding: 0 12px;
+  }
 }
 
+.h5p-vtabs.is-collapsed .h5p-vtab-li.h5p-current:after {
+  left: 45px;
+}
 .h5p-vtabs .h5p-vtab-li.h5p-current {
   .h5p-vtab-a {
     background: $primary-dark;
@@ -67,7 +121,7 @@
   &:after,
   &:before {
     position: absolute;
-    left: 200px;
+    left: 197px;
     content: " ";
     width: 0;
     height: 0;
@@ -106,7 +160,7 @@
 .h5p-placeholder > .h5p-vtab-a {
   background: $tab-dropzone-background;
   border: dashed 2px $tab-dropzone-border;
-  height: 36px;
+  height: 44px;
 }
 
 .h5p-vtabs > button {
@@ -174,6 +228,10 @@
   }
 }
 
+.is-collapsed .vtab-remove-wrapper,
+.is-collapsed .vtab-order-wrapper {
+  display: none;
+}
 .vtab-remove-wrapper {
   position: absolute;
   top: 0;
@@ -188,10 +246,11 @@
 
     &:after {
       font-family: "H5P";
-      content: "\e890";
+      content: "\e912";
       color: #6f6f71;
       display: inline-block;
       line-height: 48px;
+      font-size: 0.6em;
     }
   }
 }
@@ -232,6 +291,13 @@
     font-weight: 400;
     font-size: 1.5em;
     vertical-align: bottom;
+  }
+
+  .is-collapsed & {
+    width: 48px;
+    &:before {
+      margin-right: 0;
+    }
   }
 }
 
