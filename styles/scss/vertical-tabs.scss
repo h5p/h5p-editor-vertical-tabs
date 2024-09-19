@@ -87,7 +87,6 @@
 }
 
 .h5p-vtab-a {
-  // border: 1px solid $form-border-color;
   background-color: $subtle;
   height: 48px;
   font-size: 14px;
@@ -95,7 +94,7 @@
   line-height: 48px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  padding: 0 36px;
+  padding: 0 48px 0 12px;
   margin: 0;
   cursor: pointer;
   overflow: hidden;
@@ -106,7 +105,7 @@
   .is-collapsed & {
     text-align: center;
     padding: 0 12px;
-    > .h5p-label {
+    > *:not(.h5p-index-label) {
       display: none;
     }
   }
@@ -130,13 +129,6 @@
     width: 0;
     height: 0;
   }
-
-  // &:before {
-  //   top: 0;
-  //   border-top: 20px solid transparent;
-  //   border-bottom: 20px solid transparent;
-  //   border-left: 13px solid $form-item-importance-medium-border-color;
-  // }
 
   &:after {
     top: 0;
@@ -167,11 +159,6 @@
   height: 44px;
 }
 
-.h5p-vtabs > button {
-  float: right;
-  margin: 8px 14px 8px 8px;
-}
-
 .h5p-vtabs .h5p-moving {
   position: absolute;
   z-index: 1;
@@ -186,7 +173,7 @@
 .vtab-order-wrapper {
   position: absolute;
   top: 0;
-  right: 12px;
+  right: 0;
 
   > .order-up,
   > .order-down {
@@ -239,7 +226,7 @@
 .vtab-remove-wrapper {
   position: absolute;
   top: 0;
-  left: 0;
+  right: 18px;
 
   > .remove {
     cursor: pointer;
@@ -263,11 +250,11 @@
   color: #fff;
 }
 
-.h5peditor-button.add-entity {
+.add-entity {
   width: 200px;
   height: 40px;
   background: $form-item-importance-high-background linear-gradient($form-item-importance-high-background-highlight 50%, transparent 50%, transparent);
-
+  font-family: 'Open Sans', sans-serif;
   border: 1px solid $form-item-importance-high-border-color;
   color: white;
   font-weight: 600;

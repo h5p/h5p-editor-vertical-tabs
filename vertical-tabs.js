@@ -42,12 +42,13 @@ H5PEditor.VerticalTabs = (function ($) {
 
       // Make first letter upper case.
       entity = entity.substr(0,1).toUpperCase() + entity.substr(1);
-
+      const innerId = H5P.createUUID();
       // Create DOM elements
       var $wrapper = $('<div/>', {
         'class': 'h5p-vtab-wrapper'
       });
       var $inner = $('<div/>', {
+        id: innerId,
         'class': 'h5p-vtabs'
       }).appendTo($wrapper);
       var $container = $('<div/>', {
@@ -61,13 +62,17 @@ H5PEditor.VerticalTabs = (function ($) {
         'aria-describedby': list.getDescriptionId(),
         'role': 'tablist',
         'class': 'h5p-ul'
-      }).appendTo($container);
-      H5PEditor.createButton('add-entity', H5PEditor.t('core', 'addEntity', {':entity': entity}), function () {
+      }).appendTo($container);      
+      var $createBtn = $('<button />', {
+        text: H5PEditor.t('core', 'addEntity', {':entity': entity}),
+        class: 'add-entity'
+      }).on('click', (e) => {
+        e.preventDefault();
         if (list.addItem()) {
           $tabs.children(':last').trigger('open');
           toggleOrderButtonsState();
         }
-      }, true).appendTo($inner);
+      }).appendTo($inner);
       var $forms = $('<div/>', {
         'class': 'h5p-vtab-forms'
       }).appendTo($wrapper);
@@ -81,17 +86,22 @@ H5PEditor.VerticalTabs = (function ($) {
       var $expandCollapseBtn = $('<button />', {
         'type': 'button',
         'aria-label': 'Collapse',
+        'aria-expanded': 'true',
+        'aria-controls': innerId,
         'class': 'h5p-vtabs-expand-collapse',
       }).appendTo($header);
       
-      var $createBtn = $inner.find('.add-entity');
       $expandCollapseBtn.on('click', (e) => {
         e.preventDefault();
         $inner.toggleClass('is-collapsed');
         if ($inner.hasClass('is-collapsed')) {
+          $expandCollapseBtn.attr('aria-expanded', 'false');
           $createBtn.text('');
+          $createBtn.attr('aria-label', H5PEditor.t('core', 'addEntity', {':entity': entity}));
         } else {
+          $expandCollapseBtn.attr('aria-expanded', 'true');
           $createBtn.text(H5PEditor.t('core', 'addEntity', {':entity': entity}));
+          $createBtn.removeAttr('aria-label');
         }
       });
     }
@@ -348,7 +358,7 @@ H5PEditor.VerticalTabs = (function ($) {
       // Add clickable label
       $('<div/>', {
         'class' : 'h5p-vtab-a',
-        html: '<span class="h5p-index-label">' + ($tab.index() + 1) + '</span>. <span class="h5p-label" title="' + entity + '">' + entity + '</span>',
+        html: '<span class="h5p-index-label">' + ($tab.index() + 1) + '</span><span>.</span> <span class="h5p-label" title="' + entity + '">' + entity + '</span>',
         role: 'tab',
         tabIndex: 0,
         on: {
