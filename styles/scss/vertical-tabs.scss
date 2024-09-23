@@ -111,6 +111,17 @@
   }
 }
 
+.h5p-vtab-li {
+  > .vtab-order-wrapper {
+    > .order-up,
+    > .order-down {
+      &[aria-disabled="false"]:hover {
+        color: $primary;
+      }
+    }
+  }
+}
+
 .h5p-vtabs.is-collapsed .h5p-vtab-li.h5p-current:after {
   left: 45px;
 }
@@ -143,7 +154,7 @@
       background: $primary-dark;
 
       &[aria-disabled="false"]:hover {
-        background: darken($form-item-importance-medium-border-color, 10%);;
+        background: $primary;
       }
 
       &:after {
