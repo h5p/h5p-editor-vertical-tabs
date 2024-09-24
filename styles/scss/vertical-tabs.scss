@@ -66,8 +66,10 @@
 
 .h5p-vtabs-expand-collapse {
   @include button-tertiary;
-  height: 100%;
-  line-height: 1;
+  & {
+    height: 100%;
+    line-height: 1;
+  }
 
   &:before {
     font-family: "H5P";
@@ -94,13 +96,17 @@
   line-height: $spacing-xxl;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  padding: 0 $spacing-xxl 0 $spacing-sm;
+  padding: 0 3.7rem 0 $spacing-sm;
   margin: 0;
   cursor: pointer;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
   outline: none;
+
+  &:hover {
+    background-color: $muted;
+  }
 
   .is-collapsed & {
     text-align: center;
@@ -112,6 +118,11 @@
 }
 
 .h5p-vtab-li {
+  &:has(:hover) {
+    .h5p-vtab-a {
+      background-color: $muted;
+    }
+  }
   > .vtab-order-wrapper {
     > .order-up,
     > .order-down {
@@ -190,14 +201,13 @@
   > .order-down {
     width: 24px;
     height: 24px;
-    background: $subtle;
     font-size: 14px;
     line-height: 24px;
     cursor: pointer;
     text-align: center;
 
     &[aria-disabled="false"]:hover {
-      background-color: darken($subtle, 10%);
+      background: $subtle;
     }
 
     &:before {
@@ -237,7 +247,17 @@
 .vtab-remove-wrapper {
   position: absolute;
   top: 0;
-  right: 18px;
+  right: 24px;
+
+  &:hover {
+    background: $subtle;
+  }
+
+  &:hover {
+    .h5p-current & {
+      background: $primary;
+    }
+  }
 
   > .remove {
     cursor: pointer;
