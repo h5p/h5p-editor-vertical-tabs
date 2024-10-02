@@ -246,6 +246,7 @@
   display: none;
 }
 .vtab-remove-wrapper {
+  display: none;
   position: absolute;
   top: 0;
   right: 24px;
@@ -281,6 +282,11 @@
 .h5p-current > .vtab-remove-wrapper > .remove:after {
   color: #fff;
 }
+
+.h5p-current > .vtab-remove-wrapper {
+  display: block;
+}
+
 
 .add-entity {
   width: 200px;
