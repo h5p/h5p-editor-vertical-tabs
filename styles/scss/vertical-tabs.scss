@@ -246,7 +246,6 @@
   display: none;
 }
 .vtab-remove-wrapper {
-  display: none;
   position: absolute;
   top: 0;
   right: 24px;
@@ -283,8 +282,8 @@
   color: #fff;
 }
 
-.h5p-current > .vtab-remove-wrapper {
-  display: block;
+.h5p-vtab-li:not(.h5p-current) > .vtab-remove-wrapper {
+  display: none;
 }
 
 
