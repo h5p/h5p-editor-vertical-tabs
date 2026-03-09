@@ -5,8 +5,8 @@ H5PEditor.VerticalTabs = (function ($) {
 
   /**
    * Utility for checking if any of the parent fields is using the VerticalTabs widget
-   * 
-   * @param {Object} field 
+   *
+   * @param {Object} field
    * @returns bool
    */
   const hasVerticalTabAsParent = function (field) {
@@ -62,7 +62,7 @@ H5PEditor.VerticalTabs = (function ($) {
         'aria-describedby': list.getDescriptionId(),
         'role': 'tablist',
         'class': 'h5p-ul'
-      }).appendTo($container);      
+      }).appendTo($container);
       var $createBtn = $('<button />', {
         text: H5PEditor.t('core', 'addEntity', {':entity': entity}),
         class: 'add-entity'
@@ -102,7 +102,7 @@ H5PEditor.VerticalTabs = (function ($) {
         'aria-controls': innerId,
         'class': 'h5p-vtabs-expand-collapse',
       }).appendTo($header);
-      
+
       $expandCollapseBtn.on('click', (e) => {
         e.preventDefault();
         $inner.toggleClass('is-collapsed');
@@ -177,7 +177,7 @@ H5PEditor.VerticalTabs = (function ($) {
     /**
      * Decode HTML entities
      * @param {String}
-     * @return {String} 
+     * @return {String}
      */
     var decodeEntity = function(inputStr) {
       var textarea = document.createElement("textarea");
