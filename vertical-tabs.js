@@ -71,7 +71,6 @@ H5PEditor.VerticalTabs = (function ($) {
         if (list.addItem()) {
           $tabs.children(':last').trigger('open');
           toggleOrderButtonsState();
-          updateButtons();
         }
       }).appendTo($inner);
       var $forms = $('<div/>', {
@@ -81,7 +80,18 @@ H5PEditor.VerticalTabs = (function ($) {
       // Once all items have been added we toggle the state of the order buttons
       list.once('changeWidget', function () {
         toggleOrderButtonsState();
-        updateButtons();
+      });
+
+      list.on('listIsAtMinimum', function (event) {
+        const $tabsToToggle = event.data ?
+            $tabs.find('.vtab-remove-wrapper') :
+            $tabs.find('.h5p-vtab-li.h5p-current .vtab-remove-wrapper');
+
+        $tabsToToggle.toggle(!event.data);
+      });
+
+      list.on('listIsAtMaximum', function (event) {
+        $createBtn.toggle(!event.data);
       });
 
       $header.html('<span>Collapse</span>');
@@ -162,29 +172,6 @@ H5PEditor.VerticalTabs = (function ($) {
         $(element).text(index + 1);
       });
       toggleOrderButtonsState();
-    };
-
-    /**
-     * Update buttons.
-     *
-     * @private
-     */
-    var updateButtons = function () {
-      if (typeof list.getConfig !== 'function') {
-        return; // Might be older core version
-      }
-
-      // Show remove buttons if more tabs than min
-      if (typeof list.getConfig().min === 'number') {      
-        $tabs.find('.vtab-remove-wrapper')
-          .toggle((list.getValue() || []).length > list.getConfig().min);
-      }
-
-      // Show add button if less tabs than max
-      if (typeof list.getConfig().max === 'number') {
-        $createBtn
-          .toggle((list.getValue() || []).length < list.getConfig().max);
-      }
     };
 
     /**
@@ -473,7 +460,6 @@ H5PEditor.VerticalTabs = (function ($) {
         $tab.remove();
         $form.remove();
         reindexLabels();
-        updateButtons();
       });
 
       // Create form wrapper
